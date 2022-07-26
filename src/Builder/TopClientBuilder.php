@@ -10,10 +10,7 @@ namespace RetailCrm\Builder;
 
 use RetailCrm\Component\Constants;
 use RetailCrm\Component\Environment;
-use RetailCrm\Component\ServiceLocator;
-use RetailCrm\Factory\ProductSchemaStorageFactory;
 use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\AuthenticatorInterface;
 use RetailCrm\Interfaces\BuilderInterface;
 use RetailCrm\Interfaces\ContainerAwareInterface;
 use RetailCrm\Interfaces\TopRequestFactoryInterface;
@@ -32,9 +29,6 @@ class TopClientBuilder implements ContainerAwareInterface, BuilderInterface
 
     /** @var \RetailCrm\Interfaces\AppDataInterface $appData */
     private $appData;
-
-    /** @var \RetailCrm\Interfaces\AuthenticatorInterface $authenticator */
-    private $authenticator;
 
     /**
      * @return static
@@ -56,17 +50,6 @@ class TopClientBuilder implements ContainerAwareInterface, BuilderInterface
     }
 
     /**
-     * @param \RetailCrm\Interfaces\AuthenticatorInterface $authenticator
-     *
-     * @return TopClientBuilder
-     */
-    public function setAuthenticator(AuthenticatorInterface $authenticator): TopClientBuilder
-    {
-        $this->authenticator = $authenticator;
-        return $this;
-    }
-
-    /**
      * @return \RetailCrm\TopClient\TopClient
      * @throws \RetailCrm\Component\Exception\ValidationException
      */
@@ -79,12 +62,6 @@ class TopClientBuilder implements ContainerAwareInterface, BuilderInterface
         $client->setEnv($this->container->get(Environment::class));
         $client->setLogger($this->container->get(Constants::LOGGER));
         $client->setRequestFactory($this->container->get(TopRequestFactoryInterface::class));
-        $client->setServiceLocator($this->container->get(ServiceLocator::class));
-        $client->setProductSchemaStorageFactory($this->container->get(ProductSchemaStorageFactory::class));
-
-        if (null !== $this->authenticator) {
-            $client->setAuthenticator($this->authenticator);
-        }
 
         $client->validateSelf();
 

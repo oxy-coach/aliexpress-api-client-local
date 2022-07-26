@@ -8,7 +8,6 @@
 
 namespace RetailCrm\Model\Entity;
 
-use DateTime;
 use JMS\Serializer\Annotation as JMS;
 
 /**
@@ -21,258 +20,202 @@ use JMS\Serializer\Annotation as JMS;
 class OrderDto
 {
     /**
-     * @var int $timeoutLeftTime
+     * @var string $id
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("id")
+     */
+    public $id;
+
+    /**
+     * @var string $createdAt
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("created_at")
+     */
+    public $createdAt;
+
+    /**
+     * @var string $paidAt
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("paid_at")
+     */
+    public $paidAt;
+
+    /**
+     * @var string $updatedAt
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("updated_at")
+     */
+    public $updatedAt;
+
+    /**
+     * @var string $status
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("status")
+     */
+    public $status;
+
+    /**
+     * @var string $paymentStatus
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("payment_status")
+     */
+    public $paymentStatus;
+
+    /**
+     * @var string $deliveryStatus
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("delivery_status")
+     */
+    public $deliveryStatus;
+
+    /**
+     * @var string $deliveryAddress
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("delivery_address")
+     */
+    public $deliveryAddress;
+
+    /**
+     * @var string $antifraudStatus
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("antifraud_status")
+     */
+    public $antifraudStatus;
+
+    /**
+     * @var string $buyerCountryCode
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("buyer_country_code")
+     */
+    public $buyerCountryCode;
+
+    /**
+     * @var string $buyerName
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("buyer_name")
+     */
+    public $buyerName;
+
+    /**
+     * @var string $orderDisplayStatus
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("order_display_status")
+     */
+    public $orderDisplayStatus;
+
+    /**
+     * @var string $buyerPhone
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("buyer_phone")
+     */
+    public $buyerPhone;
+
+    /**
+     * @var \RetailCrm\Model\Entity\OrderProductDto[] $orderLines
+     *
+     * @JMS\Type("array<RetailCrm\Model\Entity\OrderProductDto>")
+     * @JMS\SerializedName("order_lines")
+     */
+    public $orderLines;
+
+    /**
+     * @var int $totalAmount
      *
      * @JMS\Type("int")
-     * @JMS\SerializedName("timeout_left_time")
+     * @JMS\SerializedName("total_amount")
      */
-    public $timeoutLeftTime;
+    public $totalAmount;
 
     /**
-     * @var string $sellerSignerFullName
+     * @var string $sellerComment
      *
      * @JMS\Type("string")
-     * @JMS\SerializedName("seller_signer_fullname")
+     * @JMS\SerializedName("seller_comment")
      */
-    public $sellerSignerFullName;
+    public $sellerComment;
 
     /**
-     * @var string $sellerOperatorLoginId
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("seller_operator_login_id")
-     */
-    public $sellerOperatorLoginId;
-
-    /**
-     * @var string $sellerLoginId
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("seller_login_id")
-     */
-    public $sellerLoginId;
-
-    /**
-     * @var \RetailCrm\Model\Entity\OrderProductDtoList $productList
-     *
-     * @JMS\Type("RetailCrm\Model\Entity\OrderProductDtoList")
-     * @JMS\SerializedName("product_list")
-     */
-    public $productList;
-
-    /**
-     * @var bool $phone
+     * @var bool $fullyPrepared
      *
      * @JMS\Type("bool")
-     * @JMS\SerializedName("phone")
+     * @JMS\SerializedName("fully_prepared")
      */
-    public $phone;
+    public $fullyPrepared;
 
     /**
-     * @var string $paymentType
+     * @var string $finishReason
      *
      * @JMS\Type("string")
-     * @JMS\SerializedName("payment_type")
+     * @JMS\SerializedName("finish_reason")
      */
-    public $paymentType;
+    public $finishReason;
 
     /**
-     * @var \RetailCrm\Model\Entity\SimpleMoney $payAmount
-     *
-     * @JMS\Type("RetailCrm\Model\Entity\SimpleMoney")
-     * @JMS\SerializedName("pay_amount")
-     */
-    public $payAmount;
-
-    /**
-     * @var string $orderStatus
+     * @var string $cutOffDate
      *
      * @JMS\Type("string")
-     * @JMS\SerializedName("order_status")
+     * @JMS\SerializedName("cut_off_date")
      */
-    public $orderStatus;
+    public $cutOffDate;
 
     /**
-     * @var int $orderId
+     * @var \RetailCrm\Model\Entity\CutOffDateDto[] $cutOffDateHistories
      *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("order_id")
+     * @JMS\Type("array<RetailCrm\Model\Entity\CutOffDateDto>")
+     * @JMS\SerializedName("cut_off_date_histories")
      */
-    public $orderId;
+    public $cutOffDateHistories;
 
     /**
-     * @var string $orderDetailUrl
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("order_detail_url")
-     */
-    public $orderDetailUrl;
-
-    /**
-     * @var string $logisticsStatus
+     * @var string $shippingDeadline
      *
      * @JMS\Type("string")
-     * @JMS\SerializedName("logistics_status")
+     * @JMS\SerializedName("shipping_deadline")
      */
-    public $logisticsStatus;
+    public $shippingDeadline;
 
     /**
-     * @var string $logisticsEscrowFeeRate
+     * @var string $nextCutOffDate
      *
      * @JMS\Type("string")
-     * @JMS\SerializedName("logisitcs_escrow_fee_rate")
+     * @JMS\SerializedName("next_cut_off_date")
      */
-    public $logisticsEscrowFeeRate;
+    public $nextCutOffDate;
 
     /**
-     * @var \RetailCrm\Model\Entity\SimpleMoney $loanAmount
+     * @var \RetailCrm\Model\Entity\PreSplitPostingDto[] $preSplitPostings
      *
-     * @JMS\Type("RetailCrm\Model\Entity\SimpleMoney")
-     * @JMS\SerializedName("loan_amount")
+     * @JMS\Type("array<RetailCrm\Model\Entity\PreSplitPostingDto>")
+     * @JMS\SerializedName("pre_split_postings")
      */
-    public $loanAmount;
+    public $preSplitPostings;
 
     /**
-     * @var string $leftSendGoodsMin
+     * @var \RetailCrm\Model\Entity\LogisticOrderDto[] $logisticOrders
      *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("left_send_good_min")
+     * @JMS\Type("array<RetailCrm\Model\Entity\LogisticOrderDto>")
+     * @JMS\SerializedName("logistic_orders")
      */
-    public $leftSendGoodsMin;
+    public $logisticOrders;
 
     /**
-     * @var string $leftSendGoodsHour
+     * @var \RetailCrm\Model\Entity\CommissionDto $commission
      *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("left_send_good_hour")
+     * @JMS\Type("RetailCrm\Model\Entity\CommissionDto")
+     * @JMS\SerializedName("commission")
      */
-    public $leftSendGoodsHour;
-
-    /**
-     * @var string $leftSendGoodsDay
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("left_send_good_day")
-     */
-    public $leftSendGoodsDay;
-
-    /**
-     * @var string $issueStatus
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("issue_status")
-     */
-    public $issueStatus;
-
-    /**
-     * @var bool $hasRequestLoan
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("has_request_loan")
-     */
-    public $hasRequestLoan;
-
-    /**
-     * @var DateTime $gmtUpdate
-     *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("gmt_update")
-     */
-    public $gmtUpdate;
-
-    /**
-     * @var DateTime $gmtSendGoodsTime
-     *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("gmt_send_goods_time")
-     */
-    public $gmtSendGoodsTime;
-
-    /**
-     * @var DateTime $gmtPayTime
-     *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("gmt_pay_time")
-     */
-    public $gmtPayTime;
-
-    /**
-     * @var DateTime $gmtCreate
-     *
-     * @JMS\Type("DateTime<'Y-m-d H:i:s'>")
-     * @JMS\SerializedName("gmt_create")
-     */
-    public $gmtCreate;
-
-    /**
-     * @var string $fundStatus
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("fund_status")
-     */
-    public $fundStatus;
-
-    /**
-     * @var string
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("frozen_status")
-     */
-    public $frozenStatus;
-
-    /**
-     * @var int $escrowFeeRate
-     *
-     * @JMS\Type("int")
-     * @JMS\SerializedName("escrow_fee_rate")
-     */
-    public $escrowFeeRate;
-
-    /**
-     * @var \RetailCrm\Model\Entity\SimpleMoney $escrowFee
-     *
-     * @JMS\Type("RetailCrm\Model\Entity\SimpleMoney")
-     * @JMS\SerializedName("escrow_fee")
-     */
-    public $escrowFee;
-
-    /**
-     * @var string $endReason
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("end_reason")
-     */
-    public $endReason;
-
-    /**
-     * @var string $buyerSignerFullName
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("buyer_signer_fullname")
-     */
-    public $buyerSignerFullName;
-
-    /**
-     * @var string $buyerLoginId
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("buyer_login_id")
-     */
-    public $buyerLoginId;
-
-    /**
-     * @var string $bizType
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("biz_type")
-     */
-    public $bizType;
-
-    /**
-     * @var string $offlinePickupType
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("offline_pickup_type")
-     */
-    public $offlinePickupType;
+    public $commission;
 }

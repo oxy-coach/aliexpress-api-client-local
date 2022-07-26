@@ -9,9 +9,6 @@
 namespace RetailCrm\Model\Request;
 
 use JMS\Serializer\Annotation as JMS;
-use RetailCrm\Component\Constants;
-use RetailCrm\Model\Enum\AvailableResponseFormats;
-use RetailCrm\Model\Enum\AvailableSignMethods;
 use Symfony\Component\Validator\Constraints as Assert;
 use RetailCrm\Component\Validator\Constraints as TopAssert;
 
@@ -30,27 +27,10 @@ abstract class BaseRequest
      * @JMS\SerializedName("method")
      * @JMS\Accessor(getter="getMethod", setter="setMethod")
      * @JMS\ReadOnly()
+     * @JMS\Exclude()
      * @Assert\NotBlank()
      */
     protected $method;
-
-    /**
-     * @var string $appKey
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("app_key")
-     * @Assert\NotBlank()
-     */
-    public $appKey;
-
-    /**
-     * @var string $appKey
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("session")
-     * @JMS\SkipWhenEmpty()
-     */
-    public $session;
 
     /**
      * @var \DateTime $timestamp
@@ -61,64 +41,6 @@ abstract class BaseRequest
      * @TopAssert\Timezone("Asia/Shanghai")
      */
     public $timestamp;
-
-    /**
-     * @var string $format
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("format")
-     * @Assert\NotBlank()
-     * @Assert\Choice(choices=RetailCrm\Model\Enum\AvailableResponseFormats::AVAILABLE_FORMATS)
-     */
-    public $format = AvailableResponseFormats::JSON;
-
-    /**
-     * @var string $version
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("v")
-     * @Assert\NotBlank()
-     * @Assert\Choice({"2.0"})
-     */
-    public $version = '2.0';
-
-    /**
-     * @var bool $simplify
-     *
-     * @JMS\Type("bool")
-     * @JMS\SerializedName("simplify")
-     * @JMS\Exclude(if="!object.simplify")
-     */
-    public $simplify = false;
-
-    /**
-     * @var string $signMethod
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("sign_method")
-     * @Assert\NotBlank()
-     * @Assert\Choice(choices=RetailCrm\Model\Enum\AvailableSignMethods::AVAILABLE_METHODS)
-     */
-    public $signMethod = AvailableSignMethods::HMAC_MD5;
-
-    /**
-     * @var string $sign
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("sign")
-     * @Assert\NotBlank()
-     * @Assert\Length(min="32", max="32")
-     */
-    public $sign = Constants::UNSIGNED_MARK;
-
-    /**
-     * @var string $partnerId
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("partner_id")
-     * @Assert\NotBlank()
-     */
-    public $partnerId = Constants::TOP_VERSION;
 
     /**
      * BaseRequest constructor.

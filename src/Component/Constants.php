@@ -23,4 +23,5 @@ class Constants
     public const VALIDATOR      = 'validator';
     public const TOP_VERSION    = 'top-sdk-php-20180326';
     public const UNSIGNED_MARK  = '00000000000000000000000000000000';
+    public const PAGE_SIZE      = 20;
 }

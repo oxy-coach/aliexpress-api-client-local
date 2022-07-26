@@ -14,17 +14,10 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use RetailCrm\Builder\AuthorizationUriBuilder;
 use RetailCrm\Component\Environment;
 use RetailCrm\Component\Exception\TopApiException;
 use RetailCrm\Component\Exception\TopClientException;
-use RetailCrm\Component\OAuthTokenFetcher;
-use RetailCrm\Component\ServiceLocator;
-use RetailCrm\Component\Storage\ProductSchemaStorage;
-use RetailCrm\Factory\ProductSchemaStorageFactory;
 use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\AuthenticatorInterface;
-use RetailCrm\Interfaces\BuilderInterface;
 use RetailCrm\Interfaces\TopClientInterface;
 use RetailCrm\Interfaces\TopRequestFactoryInterface;
 use RetailCrm\Model\Request\BaseRequest;
@@ -66,21 +59,6 @@ class TopClient implements TopClientInterface
      * @Assert\NotNull(message="Serializer should be provided")
      */
     protected $serializer;
-
-    /**
-     * @var \RetailCrm\Component\ServiceLocator $serviceLocator
-     */
-    protected $serviceLocator;
-
-    /**
-     * @var \RetailCrm\Interfaces\AuthenticatorInterface $authenticator
-     */
-    protected $authenticator;
-
-    /**
-     * @var ProductSchemaStorageFactory $productSchemaStorageFactory
-     */
-    protected $productSchemaStorageFactory;
 
     /**
      * @var \Psr\Log\LoggerInterface $logger
@@ -136,36 +114,6 @@ class TopClient implements TopClientInterface
     }
 
     /**
-     * @param \RetailCrm\Component\ServiceLocator $serviceLocator
-     */
-    public function setServiceLocator(ServiceLocator $serviceLocator): void
-    {
-        $this->serviceLocator = $serviceLocator;
-    }
-
-    /**
-     * @param \RetailCrm\Interfaces\AuthenticatorInterface $authenticator
-     *
-     * @return TopClient
-     */
-    public function setAuthenticator(AuthenticatorInterface $authenticator): TopClient
-    {
-        $this->authenticator = $authenticator;
-        return $this;
-    }
-
-    /**
-     * @param \RetailCrm\Factory\ProductSchemaStorageFactory $productSchemaStorageFactory
-     *
-     * @return TopClient
-     */
-    public function setProductSchemaStorageFactory(ProductSchemaStorageFactory $productSchemaStorageFactory): TopClient
-    {
-        $this->productSchemaStorageFactory = $productSchemaStorageFactory;
-        return $this;
-    }
-
-    /**
      * @param \Psr\Log\LoggerInterface $logger
      *
      * @return TopClient
@@ -188,45 +136,10 @@ class TopClient implements TopClientInterface
     }
 
     /**
-     * @return \RetailCrm\Component\ServiceLocator
-     */
-    public function getServiceLocator(): ServiceLocator
-    {
-        return $this->serviceLocator;
-    }
-
-    /**
-     * @param string $state
-     *
-     * @return BuilderInterface
-     */
-    public function getAuthorizationUriBuilder(string $state = ''): BuilderInterface
-    {
-        return new AuthorizationUriBuilder($this->appData->getAppKey(), $this->appData->getRedirectUri(), $state);
-    }
-
-    /**
-     * @return \RetailCrm\Component\OAuthTokenFetcher
-     */
-    public function getTokenFetcher(): OAuthTokenFetcher
-    {
-        return $this->getServiceLocator()->getOAuthTokenFetcherFactory()->create($this->appData);
-    }
-
-    /**
-     * @return \RetailCrm\Component\Storage\ProductSchemaStorage
-     */
-    public function getProductSchemaStorage(): ProductSchemaStorage
-    {
-        return $this->productSchemaStorageFactory->setClient($this)->create();
-    }
-
-    /**
      * Send TOP request. Can throw several exceptions:
      *  - ValidationException - when request didn't pass validation.
      *  - FactoryException - when PSR-7 request cannot be built.
-     *  - TopClientException - when PSR-7 request cannot be processed by client, or xml mode is used
-     *    (always use JSON mode, it's already chosen in the BaseRequest model). Previous error will contain HTTP
+     *  - TopClientException - when PSR-7 request cannot be processed by client. Previous error will contain HTTP
      *    client processing error (if it's present).
      *  - TopApiException - when request is not processed and API returned error. Note: this exception is only thrown
      *    when request cannot be processed by API at all (for example, if signature is invalid). It will not be thrown
@@ -246,10 +159,6 @@ class TopClient implements TopClientInterface
      */
     public function sendRequest(BaseRequest $request): TopResponseInterface
     {
-        if ('json' !== $request->format) {
-            throw new TopClientException(sprintf('TopClient only supports JSON mode, got `%s` mode', $request->format));
-        }
-
         $httpRequest = $this->requestFactory->fromModel($request, $this->appData);
 
         try {
@@ -274,7 +183,7 @@ class TopClient implements TopClientInterface
         $response = $this->serializer->deserialize(
             $bodyData,
             $request->getExpectedResponse(),
-            $request->format
+            'json'
         );
 
         if (!($response instanceof BaseResponse) && !is_subclass_of($response, BaseResponse::class)) {
@@ -296,28 +205,6 @@ class TopClient implements TopClientInterface
         }
 
         return $response;
-    }
-
-    /**
-     * Send authenticated TOP request. Authenticator should be present in order to use this method.
-     *
-     * @param \RetailCrm\Model\Request\BaseRequest $request
-     *
-     * @return \RetailCrm\Model\Response\TopResponseInterface
-     * @throws \RetailCrm\Component\Exception\FactoryException
-     * @throws \RetailCrm\Component\Exception\TopApiException
-     * @throws \RetailCrm\Component\Exception\TopClientException
-     * @throws \RetailCrm\Component\Exception\ValidationException
-     */
-    public function sendAuthenticatedRequest(BaseRequest $request): TopResponseInterface
-    {
-        if (null === $this->authenticator) {
-            throw new TopClientException('Authenticator is not provided');
-        }
-
-        $this->authenticator->authenticate($request);
-
-        return $this->sendRequest($request);
     }
 
     /**

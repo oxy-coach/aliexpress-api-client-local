@@ -19,78 +19,47 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class AppData implements AppDataInterface
 {
-    public const OVERSEAS_ENDPOINT = 'https://api.taobao.com/router/rest';
-    public const CHINESE_ENDPOINT = 'https://eco.taobao.com/router/rest';
-    public const AVAILABLE_ENDPOINTS = [self::OVERSEAS_ENDPOINT, self::CHINESE_ENDPOINT];
+    public const ENDPOINT = 'https://openapi.aliexpress.ru';
+    public const AVAILABLE_ENDPOINTS = [self::ENDPOINT];
 
     /**
-     * @var string $serviceUrl
+     * @var string $baseUrl
      * @Assert\Url()
      * @Assert\Choice(choices=AppData::AVAILABLE_ENDPOINTS, message="Invalid endpoint provided.")
      */
-    protected $serviceUrl;
+    protected $baseUrl;
 
     /**
-     * @var string $appKey
+     * @var string $token
      * @Assert\NotBlank()
      */
-    private $appKey;
-
-    /**
-     * @var string $appSecret
-     * @Assert\NotBlank()
-     */
-    private $appSecret;
-
-    /**
-     * @var string $redirectUri
-     */
-    private $redirectUri;
+    private $token;
 
     /**
      * AppData constructor.
      *
-     * @param string $serviceUrl
-     * @param string $appKey
-     * @param string $appSecret
+     * @param string $baseUrl
+     * @param string $token
      */
-    public function __construct(string $serviceUrl, string $appKey, string $appSecret, string $redirectUri = '')
+    public function __construct(string $baseUrl, string $token)
     {
-        $this->serviceUrl  = $serviceUrl;
-        $this->appKey      = $appKey;
-        $this->appSecret   = $appSecret;
-        $this->redirectUri = $redirectUri;
+        $this->baseUrl = $baseUrl;
+        $this->token   = $token;
     }
 
     /**
      * @return string
      */
-    public function getServiceUrl(): string
+    public function getBaseUrl(): string
     {
-        return $this->serviceUrl;
+        return $this->baseUrl;
     }
 
     /**
      * @return string
      */
-    public function getAppKey(): string
+    public function getToken(): string
     {
-        return $this->appKey;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAppSecret(): string
-    {
-        return $this->appSecret;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRedirectUri(): string
-    {
-        return $this->redirectUri;
+        return $this->token;
     }
 }

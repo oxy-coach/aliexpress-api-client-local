@@ -33,7 +33,7 @@ class TopApiException extends Exception
      */
     public function __construct(ErrorResponseBody $responseBody, Throwable $previous = null)
     {
-        parent::__construct($responseBody->msg, $responseBody->code, $previous);
+        parent::__construct($responseBody->message, $responseBody->code, $previous);
 
         $this->error = $responseBody;
     }

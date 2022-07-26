@@ -11,7 +11,6 @@ namespace RetailCrm\Factory;
 use RetailCrm\Builder\ContainerBuilder;
 use RetailCrm\Builder\TopClientBuilder;
 use RetailCrm\Component\AppData;
-use RetailCrm\Component\Authenticator\TokenAuthenticator;
 use RetailCrm\TopClient\TopClient;
 
 /**
@@ -25,28 +24,20 @@ class TopClientFactory
     /**
      * Create new TopClient
      *
-     * @param string $serviceUrl
-     * @param string $appKey
-     * @param string $appSecret
+     * @param string $baseUrl
      * @param string $token
      *
      * @return \RetailCrm\TopClient\TopClient
      * @throws \RetailCrm\Component\Exception\ValidationException
      */
     public static function createClient(
-        string $serviceUrl,
-        string $appKey,
-        string $appSecret,
-        string $token = ''
+        string $baseUrl,
+        string $token
     ): TopClient {
-        $appData = new AppData($serviceUrl, $appKey, $appSecret);
+        $appData = new AppData($baseUrl, $token);
         $builder = TopClientBuilder::create()
             ->setContainer(ContainerBuilder::create()->build())
             ->setAppData($appData);
-
-        if ('' !== $token) {
-            $builder->setAuthenticator(new TokenAuthenticator($token));
-        }
 
         return $builder->build();
     }

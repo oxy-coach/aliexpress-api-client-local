@@ -22,19 +22,11 @@ use Psr\Log\NullLogger;
 use RetailCrm\Component\Constants;
 use RetailCrm\Component\DependencyInjection\Container;
 use RetailCrm\Component\Environment;
-use RetailCrm\Component\ServiceLocator;
-use RetailCrm\Factory\FileItemFactory;
-use RetailCrm\Factory\OAuthTokenFetcherFactory;
-use RetailCrm\Factory\ProductSchemaStorageFactory;
 use RetailCrm\Factory\SerializerFactory;
 use RetailCrm\Factory\TopRequestFactory;
 use RetailCrm\Interfaces\BuilderInterface;
-use RetailCrm\Interfaces\FileItemFactoryInterface;
-use RetailCrm\Interfaces\RequestSignerInterface;
 use RetailCrm\Interfaces\RequestTimestampProviderInterface;
 use RetailCrm\Interfaces\TopRequestFactoryInterface;
-use RetailCrm\Service\RequestDataFilter;
-use RetailCrm\Service\RequestSigner;
 use RetailCrm\Service\RequestTimestampProvider;
 use RuntimeException;
 use Symfony\Component\Validator\Validation;
@@ -213,40 +205,12 @@ class ContainerBuilder implements BuilderInterface
         $container->set(Constants::SERIALIZER, function (ContainerInterface $container) {
             return SerializerFactory::withContainer($container)->create();
         });
-        $container->set(OAuthTokenFetcherFactory::class, function (ContainerInterface $container) {
-            return new OAuthTokenFetcherFactory(
-                $container->get(Constants::SERIALIZER),
-                $container->get(StreamFactoryInterface::class),
-                $container->get(RequestFactoryInterface::class),
-                $container->get(UriFactoryInterface::class),
-                $container->get(Constants::HTTP_CLIENT)
-            );
-        });
-        $container->set(FileItemFactoryInterface::class, function (ContainerInterface $container) {
-            return new FileItemFactory($container->get(StreamFactoryInterface::class));
-        });
-        $container->set(ProductSchemaStorageFactory::class, function (ContainerInterface $container) {
-            return new ProductSchemaStorageFactory($container->get(Constants::CACHE));
-        });
-        $container->set(RequestDataFilter::class, new RequestDataFilter());
-        $container->set(RequestSignerInterface::class, function (ContainerInterface $container) {
-            return new RequestSigner($container->get(RequestDataFilter::class));
-        });
         $container->set(TopRequestFactoryInterface::class, function (ContainerInterface $container) {
             return (new TopRequestFactory())
-                ->setFilter($container->get(RequestDataFilter::class))
                 ->setSerializer($container->get(Constants::SERIALIZER))
                 ->setStreamFactory($container->get(StreamFactoryInterface::class))
                 ->setRequestFactory($container->get(RequestFactoryInterface::class))
-                ->setUriFactory($container->get(UriFactoryInterface::class))
-                ->setSigner($container->get(RequestSignerInterface::class))
-                ->setTimestampProvider($container->get(RequestTimestampProviderInterface::class));
-        });
-        $container->set(ServiceLocator::class, function (ContainerInterface $container) {
-            $locator = new ServiceLocator();
-            $locator->setContainer($container);
-
-            return $locator;
+                ->setUriFactory($container->get(UriFactoryInterface::class));
         });
     }
 

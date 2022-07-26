@@ -8,9 +8,7 @@
  */
 namespace RetailCrm\Factory;
 
-use JMS\Serializer\Annotation\PostDeserialize;
 use JMS\Serializer\EventDispatcher\EventDispatcher;
-use JMS\Serializer\EventDispatcher\ObjectEvent;
 use JMS\Serializer\GraphNavigatorInterface;
 use JMS\Serializer\Handler\HandlerRegistry;
 use JMS\Serializer\Serializer;
@@ -70,9 +68,6 @@ class SerializerFactory implements FactoryInterface
                 $returnNull = function ($visitor, $obj, array $type) {
                     return null;
                 };
-                $returnSame = function ($visitor, $obj, array $type) {
-                    return $obj;
-                };
                 $serializeJson = function ($visitor, $obj, array $type) use ($container) {
                     /** @var SerializerInterface $serializer */
                     $serializer = $container->get(Constants::SERIALIZER);
@@ -88,18 +83,6 @@ class SerializerFactory implements FactoryInterface
                 $registry->registerHandler(
                     GraphNavigatorInterface::DIRECTION_DESERIALIZATION,
                     'RequestDtoInterface',
-                    'json',
-                    $returnNull
-                );
-                $registry->registerHandler(
-                    GraphNavigatorInterface::DIRECTION_SERIALIZATION,
-                    'FileItemInterface',
-                    'json',
-                    $returnSame
-                );
-                $registry->registerHandler(
-                    GraphNavigatorInterface::DIRECTION_DESERIALIZATION,
-                    'FileItemInterface',
                     'json',
                     $returnNull
                 );

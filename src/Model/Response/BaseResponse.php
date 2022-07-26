@@ -22,15 +22,7 @@ abstract class BaseResponse implements TopResponseInterface
      * @var \RetailCrm\Model\Response\ErrorResponseBody
      *
      * @JMS\Type("RetailCrm\Model\Response\ErrorResponseBody")
-     * @JMS\SerializedName("error_response")
+     * @JMS\SerializedName("error")
      */
     public $errorResponse;
-
-    /**
-     * @var string $requestId
-     *
-     * @JMS\Type("string")
-     * @JMS\SerializedName("request_id")
-     */
-    public $requestId;
 }

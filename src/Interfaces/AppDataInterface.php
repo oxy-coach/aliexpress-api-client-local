@@ -20,20 +20,10 @@ interface AppDataInterface
     /**
      * @return string
      */
-    public function getServiceUrl(): string;
+    public function getBaseUrl(): string;
 
     /**
      * @return string
      */
-    public function getAppKey(): string;
-
-    /**
-     * @return string
-     */
-    public function getAppSecret(): string;
-
-    /**
-     * @return string
-     */
-    public function getRedirectUri(): string;
+    public function getToken(): string;
 }
