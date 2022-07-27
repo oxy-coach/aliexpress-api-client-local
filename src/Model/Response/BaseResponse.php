@@ -16,7 +16,7 @@ use JMS\Serializer\Annotation as JMS;
  * @category BaseResponse
  * @package  RetailCrm\Model\Response
  */
-abstract class BaseResponse implements TopResponseInterface
+abstract class BaseResponse implements ResponseInterface
 {
     /**
      * @var \RetailCrm\Model\Response\ErrorResponseBody

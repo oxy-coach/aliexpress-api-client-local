@@ -2,7 +2,6 @@
 
 namespace RetailCrm\Test;
 
-use DateTime;
 use Http\Client\Curl\Client as CurlClient;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Mock\Client as MockClient;
@@ -14,14 +13,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use RetailCrm\Builder\ContainerBuilder;
 use RetailCrm\Component\AppData;
-use RetailCrm\Component\Authenticator\TokenAuthenticator;
 use RetailCrm\Component\Constants;
 use RetailCrm\Component\Environment;
-use RetailCrm\Component\Logger\StdoutLogger;
-use RetailCrm\Factory\FileItemFactory;
 use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\AuthenticatorInterface;
-use RetailCrm\Interfaces\FileItemFactoryInterface;
+use RetailCrm\Model\Request\GetOrderListRequest;
 
 /**
  * Class TestCase
@@ -61,84 +56,41 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     protected function getEnvAppData(): AppDataInterface
     {
         return $this->getAppData(
-            self::getenv('ENDPOINT', AppData::OVERSEAS_ENDPOINT),
-            self::getEnvAppKey(),
-            self::getenv('APP_SECRET', 'helloworld'),
-            self::getenv('REDIRECT_URI', 'https://example.com'),
+            self::getenv('ENDPOINT', AppData::ENDPOINT),
+            self::getenv('TOKEN', 'test_token'),
         );
     }
 
     /**
      * @param string $endpoint
-     * @param string $appKey
-     * @param string $appSecret
-     *
-     * @param string $redirectUri
+     * @param string $token
      *
      * @return \RetailCrm\Interfaces\AppDataInterface
      */
     protected function getAppData(
-        string $endpoint = AppData::OVERSEAS_ENDPOINT,
-        string $appKey = 'appKey',
-        string $appSecret = 'helloworld',
-        string $redirectUri = 'https://example.com'
+        string $endpoint = AppData::ENDPOINT,
+        string $token = 'token'
     ): AppDataInterface{
-        return new AppData($endpoint, $appKey, $appSecret, $redirectUri);
-    }
-
-    protected function getEnvTokenAuthenticator(): AuthenticatorInterface
-    {
-        return $this->getTokenAuthenticator(self::getEnvToken());
-    }
-
-    /**
-     * @param string $token
-     *
-     * @return \RetailCrm\Interfaces\AuthenticatorInterface
-     */
-    protected function getTokenAuthenticator(string $token): AuthenticatorInterface
-    {
-        return new TokenAuthenticator($token);
+        return new AppData($endpoint, $token);
     }
 
     /**
      * @param string $signMethod
      *
-     * @param bool $withFile
      * @param bool $withDto
      *
-     * @return \RetailCrm\Test\TestSignerRequest
+     * @return GetOrderListRequest
      */
-    protected function getTestRequest(string $signMethod, bool $withFile = false, bool $withDto = false): TestSignerRequest
+    protected function getTestRequest(): GetOrderListRequest
     {
-        $request = new TestSignerRequest();
-        $request->appKey = '12345678';
-        $request->session = 'test';
-        $request->timestamp = DateTime::createFromFormat('Y-m-d H:i:s', '2016-01-01 12:00:00');
-        $request->signMethod = $signMethod;
-        $request->serviceName = 'SPAIN_LOCAL_CORREOS';
-        $request->outRef = '1000006270175804';
-        $request->sendType = 'all';
-        $request->logisticsNo = 'ES2019COM0000123456';
-
-        if ($withFile) {
-            /** @var FileItemFactory $factory */
-            $factory = $this->getContainer()->get(FileItemFactoryInterface::class);
-            $request->document = $factory->fromString(
-                'file.txt',
-                'The quick brown fox jumps over the lazy dog'
-            );
-        }
-
-        if ($withDto) {
-            $request->dto = new TestDto();
-        }
+        $request = new GetOrderListRequest();
+        $request->page = 1;
 
         return $request;
     }
 
     /**
-     * @param int                                    $code
+     * @param int                 $code
      * @param object|array|string $response
      *
      * @return \Psr\Http\Message\ResponseInterface
@@ -170,22 +122,6 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         return $responseFactory->createResponse($code)
             ->withHeader('Content-Type', 'application/json')
             ->withBody($data);
-    }
-
-    /**
-     * @return string
-     */
-    protected static function getEnvAppKey(): string
-    {
-        return self::getenv('APP_KEY', 'appKey');
-    }
-
-    /**
-     * @return string
-     */
-    protected static function getEnvToken(): string
-    {
-        return self::getenv('SESSION', 'test');
     }
 
     /**

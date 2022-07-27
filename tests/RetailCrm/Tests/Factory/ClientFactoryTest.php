@@ -3,30 +3,28 @@
 /**
  * PHP version 7.3
  *
- * @category TopClientFactoryTest
+ * @category ClientFactoryTest
  * @package  RetailCrm\Tests\Factory
  */
 namespace RetailCrm\Tests\Factory;
 
 use RetailCrm\Component\AppData;
 use RetailCrm\Component\Exception\ValidationException;
-use RetailCrm\Factory\TopClientFactory;
+use RetailCrm\Factory\ClientFactory;
 use RetailCrm\Test\TestCase;
 
 /**
- * Class TopClientFactoryTest
+ * Class ClientFactoryTest
  *
- * @category TopClientFactoryTest
+ * @category ClientFactoryTest
  * @package  RetailCrm\Tests\Factory
  */
-class TopClientFactoryTest extends TestCase
+class ClientFactoryTest extends TestCase
 {
     public function testCreateClient(): void
     {
-        $client = TopClientFactory::createClient(
-            AppData::OVERSEAS_ENDPOINT,
-            'appKey',
-            'appSecret',
+        $client = ClientFactory::createClient(
+            AppData::ENDPOINT,
             'token'
         );
 
@@ -36,6 +34,6 @@ class TopClientFactoryTest extends TestCase
     public function testCreateClientException(): void
     {
         $this->expectException(ValidationException::class);
-        TopClientFactory::createClient('https://example.com', 'appKey', 'appSecret');
+        ClientFactory::createClient('https://example.com', 'token');
     }
 }

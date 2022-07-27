@@ -3,7 +3,7 @@
 /**
  * PHP version 7.3
  *
- * @category TopClientException
+ * @category ClientException
  * @package  RetailCrm\Component\Exception
  */
 namespace RetailCrm\Component\Exception;
@@ -11,11 +11,11 @@ namespace RetailCrm\Component\Exception;
 use Exception;
 
 /**
- * Class TopClientException
+ * Class ClientException
  *
- * @category TopClientException
+ * @category ClientException
  * @package  RetailCrm\Component\Exception
  */
-class TopClientException extends Exception
+class ClientException extends Exception
 {
 }

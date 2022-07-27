@@ -7,6 +7,13 @@ use RetailCrm\Component\Constants;
 use RetailCrm\Model\Response\GetOrderListResponse;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class GetOrderListRequest
+ *
+ * @category GetOrderListRequest
+ * @package  RetailCrm\Model\Request
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ */
 class GetOrderListRequest extends BaseRequest
 {
     /**

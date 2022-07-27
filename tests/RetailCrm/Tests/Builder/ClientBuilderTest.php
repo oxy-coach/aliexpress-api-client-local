@@ -9,10 +9,9 @@
 namespace RetailCrm\Tests\Builder;
 
 use RetailCrm\Component\AppData;
-use RetailCrm\Component\ServiceLocator;
-use RetailCrm\Builder\TopClientBuilder;
+use RetailCrm\Builder\ClientBuilder;
 use RetailCrm\Test\TestCase;
-use RetailCrm\TopClient\TopClient;
+use RetailCrm\Client\Client;
 
 /**
  * Class ClientBuilderTest
@@ -24,12 +23,11 @@ class ClientBuilderTest extends TestCase
 {
     public function testCreateClient()
     {
-        $client = TopClientBuilder::create()
+        $client = ClientBuilder::create()
             ->setContainer($this->getContainer())
-            ->setAppData(new AppData(AppData::OVERSEAS_ENDPOINT, 'appKey', 'helloworld'))
+            ->setAppData(new AppData(AppData::ENDPOINT, 'token'))
             ->build();
 
-        self::assertInstanceOf(TopClient::class, $client);
-        self::assertInstanceOf(ServiceLocator::class, $client->getServiceLocator());
+        self::assertInstanceOf(Client::class, $client);
     }
 }

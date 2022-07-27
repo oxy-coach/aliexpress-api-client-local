@@ -3,7 +3,7 @@
 /**
  * PHP version 7.3
  *
- * @category TopRequestFactory
+ * @category RequestFactory
  * @package  RetailCrm\Factory
  */
 namespace RetailCrm\Factory;
@@ -15,17 +15,17 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use RetailCrm\Component\Exception\FactoryException;
 use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\TopRequestFactoryInterface;
+use RetailCrm\Interfaces\RequestFactoryInterface as LocalRequestFactoryInterface;
 use RetailCrm\Model\Request\BaseRequest;
 
 /**
- * Class TopRequestFactory
+ * Class RequestFactory
  *
- * @category TopRequestFactory
+ * @category RequestFactory
  * @package  RetailCrm\Factory
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class TopRequestFactory implements TopRequestFactoryInterface
+class RequestFactory implements LocalRequestFactoryInterface
 {
     /**
      * @var SerializerInterface|\JMS\Serializer\Serializer $serializer
@@ -50,9 +50,9 @@ class TopRequestFactory implements TopRequestFactoryInterface
     /**
      * @param \JMS\Serializer\Serializer|\JMS\Serializer\SerializerInterface $serializer
      *
-     * @return TopRequestFactory
+     * @return RequestFactory
      */
-    public function setSerializer($serializer): TopRequestFactory
+    public function setSerializer($serializer): RequestFactory
     {
         $this->serializer = $serializer;
         return $this;
@@ -61,9 +61,9 @@ class TopRequestFactory implements TopRequestFactoryInterface
     /**
      * @param \Psr\Http\Message\StreamFactoryInterface $streamFactory
      *
-     * @return TopRequestFactory
+     * @return RequestFactory
      */
-    public function setStreamFactory(StreamFactoryInterface $streamFactory): TopRequestFactory
+    public function setStreamFactory(StreamFactoryInterface $streamFactory): RequestFactory
     {
         $this->streamFactory = $streamFactory;
         return $this;
@@ -72,9 +72,9 @@ class TopRequestFactory implements TopRequestFactoryInterface
     /**
      * @param \Psr\Http\Message\RequestFactoryInterface $requestFactory
      *
-     * @return TopRequestFactory
+     * @return RequestFactory
      */
-    public function setRequestFactory(RequestFactoryInterface $requestFactory): TopRequestFactory
+    public function setRequestFactory(RequestFactoryInterface $requestFactory): RequestFactory
     {
         $this->requestFactory = $requestFactory;
         return $this;
@@ -83,9 +83,9 @@ class TopRequestFactory implements TopRequestFactoryInterface
     /**
      * @param \Psr\Http\Message\UriFactoryInterface $uriFactory
      *
-     * @return TopRequestFactory
+     * @return RequestFactory
      */
-    public function setUriFactory(UriFactoryInterface $uriFactory): TopRequestFactory
+    public function setUriFactory(UriFactoryInterface $uriFactory): RequestFactory
     {
         $this->uriFactory = $uriFactory;
         return $this;

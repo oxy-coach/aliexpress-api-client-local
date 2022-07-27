@@ -3,7 +3,7 @@
 /**
  * PHP version 7.3
  *
- * @category TopApiException
+ * @category LocalApiException
  * @package  RetailCrm\Component\Exception
  */
 namespace RetailCrm\Component\Exception;
@@ -13,12 +13,12 @@ use RetailCrm\Model\Response\ErrorResponseBody;
 use Throwable;
 
 /**
- * Class TopApiException
+ * Class LocalApiException
  *
- * @category TopApiException
+ * @category LocalApiException
  * @package  RetailCrm\Component\Exception
  */
-class TopApiException extends Exception
+class LocalApiException extends Exception
 {
     /**
      * @var ErrorResponseBody $error
@@ -26,7 +26,7 @@ class TopApiException extends Exception
     private $error;
 
     /**
-     * TopApiException constructor.
+     * LocalApiException constructor.
      *
      * @param \RetailCrm\Model\Response\ErrorResponseBody $responseBody
      * @param \Throwable|null                             $previous

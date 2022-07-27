@@ -3,18 +3,18 @@
 /**
  * PHP version 7.3
  *
- * @category TopResponseInterface
+ * @category ResponseInterface
  * @package  RetailCrm\Model\Response
  */
 
 namespace RetailCrm\Model\Response;
 
 /**
- * Interface TopResponseInterface
+ * Interface ResponseInterface
  *
- * @category TopResponseInterface
+ * @category ResponseInterface
  * @package  RetailCrm\Model\Response
  */
-interface TopResponseInterface
+interface ResponseInterface
 {
 }

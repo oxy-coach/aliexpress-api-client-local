@@ -17,49 +17,27 @@ namespace RetailCrm\Model\Enum;
 class LogisticsStatuses
 {
     public const NEW = 'New';
-
     public const AWAITING_CREATE_ORDER = 'AwaitingCreateOrder';
-
     public const ORDER_CREATION_PROBLEMS = 'OrderCreationProblems';
-
     public const AWAITING_HANDOVER_LIST = 'AwaitingHandoverList';
-
     public const ADDING_TO_HANDOVER_PROBLEMS = 'AddingToHandoverProblems';
-
     public const AWAITING_CONFIRMATION = 'AwaitingConfirmation';
-
     public const AWAITING_DISPATCH = 'AwaitingDispatch';
-
     public const ORDER_RECEIVED_FROM_SELLER = 'OrderReceivedFromSeller';
-
     public const CROSS_DOC_SORTING = 'CrossDocSorting';
-
     public const CROSS_DOC_SENT = 'CrossDocSent';
-
     public const PROVIDER_POSTING_RECEIVE = 'ProviderPostingReceive';
-
     public const PROVIDER_POSTING_LEFT_THE_RECEPTION = 'ProviderPostingLeftTheReception';
-
     public const PROVIDER_POSTING_ARRIVED_AT_SORTING = 'ProviderPostingArrivedAtSorting';
-
     public const PROVIDER_POSTING_SORTING = 'ProviderPostingSorting';
-
     public const PROVIDER_POSTING_LEFT_THE_SORTING = 'ProviderPostingLeftTheSorting';
-
     public const PROVIDER_POSTING_ARRIVED = 'ProviderPostingArrived';
-
     public const PROVIDER_POSTING_DELIVERED = 'ProviderPostingDelivered';
-
     public const PROVIDER_POSTING_UNSUCCESSFUL_ATTEMPT_OF_DELIVERY = 'ProviderPostingUnsuccessfulAttemptOfDelivery';
-
     public const PROVIDER_POSTING_IN_RETURN = 'ProviderPostingInReturn';
-
     public const PROVIDER_POSTING_TEMPORARY_STORAGE = 'ProviderPostingTemporaryStorage';
-
     public const PROVIDER_POSTING_RETURNED = 'ProviderPostingReturned';
-
     public const REJECTED = 'Rejected';
-
     public const CANCELLED = 'Cancelled';
 
     // All logistics statuses

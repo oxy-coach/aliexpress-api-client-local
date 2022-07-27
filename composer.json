@@ -1,6 +1,6 @@
 {
-    "name": "retailcrm/aliexpress-top-client",
-    "description": "API client implementation for AliExpress TOP.",
+    "name": "oxy-coach/aliexpress-api-client-local",
+    "description": "API client implementation for new AliExpress API version.",
     "type": "library",
     "keywords": ["API", "RetailCRM", "REST", "AliExpress"],
     "homepage": "http://www.retailcrm.pro/",

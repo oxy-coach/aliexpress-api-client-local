@@ -23,10 +23,10 @@ use RetailCrm\Component\Constants;
 use RetailCrm\Component\DependencyInjection\Container;
 use RetailCrm\Component\Environment;
 use RetailCrm\Factory\SerializerFactory;
-use RetailCrm\Factory\TopRequestFactory;
+use RetailCrm\Factory\RequestFactory;
 use RetailCrm\Interfaces\BuilderInterface;
 use RetailCrm\Interfaces\RequestTimestampProviderInterface;
-use RetailCrm\Interfaces\TopRequestFactoryInterface;
+use RetailCrm\Interfaces\RequestFactoryInterface as LocalRequestFactoryInterface;
 use RetailCrm\Service\RequestTimestampProvider;
 use RuntimeException;
 use Symfony\Component\Validator\Validation;
@@ -205,8 +205,8 @@ class ContainerBuilder implements BuilderInterface
         $container->set(Constants::SERIALIZER, function (ContainerInterface $container) {
             return SerializerFactory::withContainer($container)->create();
         });
-        $container->set(TopRequestFactoryInterface::class, function (ContainerInterface $container) {
-            return (new TopRequestFactory())
+        $container->set(LocalRequestFactoryInterface::class, function (ContainerInterface $container) {
+            return (new RequestFactory())
                 ->setSerializer($container->get(Constants::SERIALIZER))
                 ->setStreamFactory($container->get(StreamFactoryInterface::class))
                 ->setRequestFactory($container->get(RequestFactoryInterface::class))

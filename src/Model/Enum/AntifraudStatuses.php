@@ -5,11 +5,8 @@ namespace RetailCrm\Model\Enum;
 class AntifraudStatuses
 {
     public const NOT_CHECKED = 'NotChecked';
-
     public const CHECKING = 'Checking';
-
     public const BLOCKED = 'Blocked';
-
     public const PASSED = 'Passed';
 
     // List of all statuses.

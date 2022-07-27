@@ -3,7 +3,7 @@
 /**
  * PHP version 7.3
  *
- * @category TopRequestFactoryInterface
+ * @category RequestFactoryInterface
  * @package  RetailCrm\Interfaces
  */
 
@@ -13,12 +13,12 @@ use Psr\Http\Message\RequestInterface;
 use RetailCrm\Model\Request\BaseRequest;
 
 /**
- * Interface TopRequestFactoryInterface
+ * Interface RequestFactoryInterface
  *
- * @category TopRequestFactoryInterface
+ * @category RequestFactoryInterface
  * @package  RetailCrm\Interfaces
  */
-interface TopRequestFactoryInterface
+interface RequestFactoryInterface
 {
     /**
      * @param \RetailCrm\Model\Request\BaseRequest         $request

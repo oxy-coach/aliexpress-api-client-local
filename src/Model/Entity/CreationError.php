@@ -2,6 +2,8 @@
 
 namespace RetailCrm\Model\Entity;
 
+use JMS\Serializer\Annotation as JMS;
+
 class CreationError
 {
     /**

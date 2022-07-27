@@ -1,12 +1,6 @@
 <?php
 
-/**
- * PHP version 7.3
- *
- * @category TopClient
- * @package  RetailCrm\TopClient
- */
-namespace RetailCrm\TopClient;
+namespace RetailCrm\Client;
 
 use JMS\Serializer\SerializerInterface;
 use Psr\Http\Client\ClientExceptionInterface;
@@ -15,25 +9,25 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use RetailCrm\Component\Environment;
-use RetailCrm\Component\Exception\TopApiException;
-use RetailCrm\Component\Exception\TopClientException;
+use RetailCrm\Component\Exception\LocalApiException;
+use RetailCrm\Component\Exception\ClientException;
 use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\TopClientInterface;
-use RetailCrm\Interfaces\TopRequestFactoryInterface;
+use RetailCrm\Interfaces\ClientInterface as LocalClientInterface;
+use RetailCrm\Interfaces\RequestFactoryInterface;
 use RetailCrm\Model\Request\BaseRequest;
 use RetailCrm\Model\Response\BaseResponse;
-use RetailCrm\Model\Response\TopResponseInterface;
+use RetailCrm\Model\Response\ResponseInterface;
 use RetailCrm\Traits\ValidatorAwareTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class TopClient
+ * Class Client
  *
- * @category TopClient
- * @package  RetailCrm\TopClient
+ * @category Client
+ * @package  RetailCrm\Client
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class TopClient implements TopClientInterface
+class Client implements LocalClientInterface
 {
     use ValidatorAwareTrait;
 
@@ -49,7 +43,7 @@ class TopClient implements TopClientInterface
     protected $httpClient;
 
     /**
-     * @var \RetailCrm\Interfaces\TopRequestFactoryInterface $requestFactory
+     * @var \RetailCrm\Interfaces\RequestFactoryInterface $requestFactory
      * @Assert\NotNull(message="RequestFactoryInterface should be provided")
      */
     protected $requestFactory;
@@ -71,7 +65,7 @@ class TopClient implements TopClientInterface
     protected $env;
 
     /**
-     * TopClient constructor.
+     * Client constructor.
      *
      * @param \RetailCrm\Interfaces\AppDataInterface       $appData
      */
@@ -106,9 +100,9 @@ class TopClient implements TopClientInterface
     }
 
     /**
-     * @param \RetailCrm\Interfaces\TopRequestFactoryInterface $requestFactory
+     * @param \RetailCrm\Interfaces\RequestFactoryInterface $requestFactory
      */
-    public function setRequestFactory(TopRequestFactoryInterface $requestFactory): void
+    public function setRequestFactory(RequestFactoryInterface $requestFactory): void
     {
         $this->requestFactory = $requestFactory;
     }
@@ -116,9 +110,9 @@ class TopClient implements TopClientInterface
     /**
      * @param \Psr\Log\LoggerInterface $logger
      *
-     * @return TopClient
+     * @return Client
      */
-    public function setLogger(LoggerInterface $logger): TopClient
+    public function setLogger(LoggerInterface $logger): Client
     {
         $this->logger = $logger;
         return $this;
@@ -127,22 +121,22 @@ class TopClient implements TopClientInterface
     /**
      * @param \RetailCrm\Component\Environment $env
      *
-     * @return TopClient
+     * @return Client
      */
-    public function setEnv(Environment $env): TopClient
+    public function setEnv(Environment $env): Client
     {
         $this->env = $env;
         return $this;
     }
 
     /**
-     * Send TOP request. Can throw several exceptions:
+     * Send request. Can throw several exceptions:
      *  - ValidationException - when request didn't pass validation.
      *  - FactoryException - when PSR-7 request cannot be built.
-     *  - TopClientException - when PSR-7 request cannot be processed by client. Previous error will contain HTTP
+     *  - ClientException - when PSR-7 request cannot be processed by client. Previous error will contain HTTP
      *    client processing error (if it's present).
-     *  - TopApiException - when request is not processed and API returned error. Note: this exception is only thrown
-     *    when request cannot be processed by API at all (for example, if signature is invalid). It will not be thrown
+     *  - LocalApiException - when request is not processed and API returned error. Note: this exception is only thrown
+     *    when request cannot be processed by API at all (for example, if token is invalid). It will not be thrown
      *    if request was processed, but API returned error in the response result. In that case you can use error fields
      *    from the response result itself; those results implement ErrorInterface via ErrorTrait.
      *    However, some result classes may contain different format for error data. Those result classes won't implement
@@ -151,32 +145,34 @@ class TopClient implements TopClientInterface
      *
      * @param \RetailCrm\Model\Request\BaseRequest $request
      *
-     * @return TopResponseInterface
+     * @return ResponseInterface
      * @throws \RetailCrm\Component\Exception\ValidationException
      * @throws \RetailCrm\Component\Exception\FactoryException
-     * @throws \RetailCrm\Component\Exception\TopClientException
-     * @throws \RetailCrm\Component\Exception\TopApiException
+     * @throws \RetailCrm\Component\Exception\ClientException
+     * @throws \RetailCrm\Component\Exception\LocalApiException
      */
-    public function sendRequest(BaseRequest $request): TopResponseInterface
+    public function sendRequest(BaseRequest $request): ResponseInterface
     {
         $httpRequest = $this->requestFactory->fromModel($request, $this->appData);
 
         try {
             $httpResponse = $this->httpClient->sendRequest($httpRequest);
         } catch (ClientExceptionInterface $exception) {
-            throw new TopClientException(sprintf('Error sending request: %s', $exception->getMessage()), 0, $exception);
+            throw new ClientException(sprintf('Error sending request: %s', $exception->getMessage()), 0, $exception);
         }
 
         $bodyData = self::getBodyContents($httpResponse->getBody());
 
         if ($this->debugLogging()) {
-            $this->logger->debug(sprintf(
-                '<AliExpress TOP Client> Request %s (%s) (%s): got response %s',
-                $request->getMethod(),
-                $httpRequest->getUri()->__toString(),
-                $httpRequest->getBody()->__toString(),
-                $bodyData
-            ));
+            $this->logger->debug(
+                sprintf(
+                    '<AliExpress TOP Client> Request %s (%s) (%s): got response %s',
+                    $request->getMethod(),
+                    $httpRequest->getUri()->__toString(),
+                    $httpRequest->getBody()->__toString(),
+                    $bodyData
+                )
+            );
         }
 
         /** @var BaseResponse $response */
@@ -187,21 +183,23 @@ class TopClient implements TopClientInterface
         );
 
         if (!($response instanceof BaseResponse) && !is_subclass_of($response, BaseResponse::class)) {
-            throw new TopClientException(sprintf('Invalid response class: %s', get_class($response)));
+            throw new ClientException(sprintf('Invalid response class: %s', get_class($response)));
         }
 
         if (null !== $response->errorResponse) {
             if ($this->debugLogging()) {
-                $this->logger->debug(sprintf(
-                    '<AliExpress TOP Client> Request %s (%s) (%s): got error response %s',
-                    $request->getMethod(),
-                    $httpRequest->getUri()->__toString(),
-                    $httpRequest->getBody()->__toString(),
-                    $bodyData
-                ));
+                $this->logger->debug(
+                    sprintf(
+                        '<AliExpress TOP Client> Request %s (%s) (%s): got error response %s',
+                        $request->getMethod(),
+                        $httpRequest->getUri()->__toString(),
+                        $httpRequest->getBody()->__toString(),
+                        $bodyData
+                    )
+                );
             }
 
-            throw new TopApiException($response->errorResponse);
+            throw new LocalApiException($response->errorResponse);
         }
 
         return $response;

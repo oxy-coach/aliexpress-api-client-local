@@ -3,39 +3,39 @@
 /**
  * PHP version 7.3
  *
- * @category TopClientFactory
+ * @category ClientFactory
  * @package  RetailCrm\Factory
  */
 namespace RetailCrm\Factory;
 
 use RetailCrm\Builder\ContainerBuilder;
-use RetailCrm\Builder\TopClientBuilder;
+use RetailCrm\Builder\ClientBuilder;
 use RetailCrm\Component\AppData;
-use RetailCrm\TopClient\TopClient;
+use RetailCrm\Client\Client;
 
 /**
- * Class TopClientFactory
+ * Class ClientFactory
  *
- * @category TopClientFactory
+ * @category ClientFactory
  * @package  RetailCrm\Factory
  */
-class TopClientFactory
+class ClientFactory
 {
     /**
-     * Create new TopClient
+     * Create new Client
      *
      * @param string $baseUrl
      * @param string $token
      *
-     * @return \RetailCrm\TopClient\TopClient
+     * @return Client
      * @throws \RetailCrm\Component\Exception\ValidationException
      */
     public static function createClient(
         string $baseUrl,
         string $token
-    ): TopClient {
+    ): Client {
         $appData = new AppData($baseUrl, $token);
-        $builder = TopClientBuilder::create()
+        $builder = ClientBuilder::create()
             ->setContainer(ContainerBuilder::create()->build())
             ->setAppData($appData);
 

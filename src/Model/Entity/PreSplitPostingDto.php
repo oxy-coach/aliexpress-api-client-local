@@ -43,5 +43,4 @@ class PreSplitPostingDto
      * @JMS\SerializedName("posting_lines")
      */
     public $postingLines;
-
 }

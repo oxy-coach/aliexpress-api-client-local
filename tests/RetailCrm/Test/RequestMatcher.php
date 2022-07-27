@@ -32,11 +32,6 @@ class RequestMatcher implements RequestMatcherInterface
     /**
      * @var string
      */
-    private $method;
-
-    /**
-     * @var string
-     */
     private $scheme;
 
     /**
@@ -48,21 +43,6 @@ class RequestMatcher implements RequestMatcherInterface
      * @var array
      */
     private $optionalHeaders = [];
-
-    /**
-     * @var array
-     */
-    private $queryParams = [];
-
-    /**
-     * @var array
-     */
-    private $optionalQueryParams = [];
-
-    /**
-     * @var array
-     */
-    private $optionalPostFields = [];
 
     /**
      * RequestMatcher constructor.
@@ -96,17 +76,6 @@ class RequestMatcher implements RequestMatcherInterface
     }
 
     /**
-     * @param string $method
-     *
-     * @return RequestMatcher
-     */
-    public function setMethod(string $method): RequestMatcher
-    {
-        $this->method = $method;
-        return $this;
-    }
-
-    /**
      * @param string $scheme
      *
      * @return RequestMatcher
@@ -129,59 +98,11 @@ class RequestMatcher implements RequestMatcherInterface
     }
 
     /**
-     * @param array $optionalHeaders
-     *
-     * @return RequestMatcher
-     */
-    public function setOptionalHeaders(array $optionalHeaders): RequestMatcher
-    {
-        $this->optionalHeaders = $optionalHeaders;
-        return $this;
-    }
-
-    /**
-     * @param array $queryParams
-     *
-     * @return RequestMatcher
-     */
-    public function setQueryParams(array $queryParams): RequestMatcher
-    {
-        $this->queryParams = $queryParams;
-        return $this;
-    }
-
-    /**
-     * @param array $optionalQueryParams
-     *
-     * @return RequestMatcher
-     */
-    public function setOptionalQueryParams(array $optionalQueryParams): RequestMatcher
-    {
-        $this->optionalQueryParams = $optionalQueryParams;
-        return $this;
-    }
-
-    /**
-     * @param array $optionalPostFields
-     *
-     * @return RequestMatcher
-     */
-    public function setOptionalPostFields(array $optionalPostFields): RequestMatcher
-    {
-        $this->optionalPostFields = $optionalPostFields;
-        return $this;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function matches(RequestInterface $request)
     {
         if ($this->scheme && strtoupper($request->getUri()->getScheme()) !== strtoupper($this->scheme)) {
-            return false;
-        }
-
-        if ($this->method && strtoupper($request->getMethod()) !== strtoupper($this->method)) {
             return false;
         }
 
@@ -197,32 +118,8 @@ class RequestMatcher implements RequestMatcherInterface
             return false;
         }
 
-        if (!empty($this->queryParams)
-            && count(array_diff_assoc($this->queryParams, $this->getQueryData($request->getUri()->getQuery()))) > 0
-        ) {
-            return false;
-        }
-
         if (!empty($this->optionalHeaders)
             && !$this->firstArrayPresentInSecond($this->optionalHeaders, $request->getHeaders())
-        ) {
-            return false;
-        }
-
-        if (!empty($this->optionalQueryParams)
-            && !$this->firstArrayPresentInSecond(
-                $this->optionalQueryParams,
-                $this->getQueryData($request->getUri()->getQuery())
-            )
-        ) {
-            return false;
-        }
-
-        if (!empty($this->optionalPostFields)
-            && !$this->firstArrayPresentInSecond(
-                $this->optionalPostFields,
-                $this->getQueryData((string) $request->getBody())
-            )
         ) {
             return false;
         }
@@ -239,18 +136,5 @@ class RequestMatcher implements RequestMatcherInterface
     private function firstArrayPresentInSecond(array $first, array $second): bool
     {
         return count(array_diff_assoc($first, array_intersect_assoc($first, $second))) === 0;
-    }
-
-    /**
-     * @param string $query
-     *
-     * @return array
-     */
-    private function getQueryData(string $query): array
-    {
-        $list = [];
-        parse_str($query, $list);
-
-        return $list;
     }
 }
