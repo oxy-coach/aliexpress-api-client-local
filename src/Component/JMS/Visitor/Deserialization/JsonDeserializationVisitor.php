@@ -3,12 +3,11 @@
  * PHP version 7.3
  *
  * @category JsonDeserializationVisitor
- * @package  RetailCrm\Component\JMS\Visitor\Deserialization
+ * @package  Simla\Component\JMS\Visitor\Deserialization
  */
 
-namespace RetailCrm\Component\JMS\Visitor\Deserialization;
+namespace Simla\Component\JMS\Visitor\Deserialization;
 
-use JMS\Serializer\AbstractVisitor;
 use JMS\Serializer\Exception\LogicException;
 use JMS\Serializer\Exception\NotAcceptableException;
 use JMS\Serializer\Exception\RuntimeException;
@@ -23,7 +22,7 @@ use SplStack;
  * Class JsonDeserializationVisitor
  *
  * @category JsonDeserializationVisitor
- * @package  RetailCrm\Component\JMS\Visitor\Deserialization
+ * @package  Simla\Component\JMS\Visitor\Deserialization
  */
 class JsonDeserializationVisitor implements DeserializationVisitorInterface
 {

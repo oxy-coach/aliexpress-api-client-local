@@ -4,20 +4,21 @@
  * PHP version 7.3
  *
  * @category ClientFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  */
-namespace RetailCrm\Factory;
+namespace Simla\Factory;
 
-use RetailCrm\Builder\ContainerBuilder;
-use RetailCrm\Builder\ClientBuilder;
-use RetailCrm\Component\AppData;
-use RetailCrm\Client\Client;
+use Simla\Builder\ContainerBuilder;
+use Simla\Builder\ClientBuilder;
+use Simla\Component\AppData;
+use Simla\Component\Exception\ValidationException;
+use Simla\Client\Client;
 
 /**
  * Class ClientFactory
  *
  * @category ClientFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  */
 class ClientFactory
 {
@@ -28,7 +29,7 @@ class ClientFactory
      * @param string $token
      *
      * @return Client
-     * @throws \RetailCrm\Component\Exception\ValidationException
+     * @throws ValidationException
      */
     public static function createClient(
         string $baseUrl,

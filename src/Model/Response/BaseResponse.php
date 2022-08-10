@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category BaseResponse
- * @package  RetailCrm\Model\Response
+ * @package  Simla\Model\Response
  */
-namespace RetailCrm\Model\Response;
+namespace Simla\Model\Response;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -14,14 +14,14 @@ use JMS\Serializer\Annotation as JMS;
  * Class BaseResponse
  *
  * @category BaseResponse
- * @package  RetailCrm\Model\Response
+ * @package  Simla\Model\Response
  */
 abstract class BaseResponse implements ResponseInterface
 {
     /**
-     * @var \RetailCrm\Model\Response\ErrorResponseBody
+     * @var \Simla\Model\Response\ErrorResponseBody
      *
-     * @JMS\Type("RetailCrm\Model\Response\ErrorResponseBody")
+     * @JMS\Type("Simla\Model\Response\ErrorResponseBody")
      * @JMS\SerializedName("error")
      */
     public $errorResponse;

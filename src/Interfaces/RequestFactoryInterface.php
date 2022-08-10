@@ -4,29 +4,31 @@
  * PHP version 7.3
  *
  * @category RequestFactoryInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 
-namespace RetailCrm\Interfaces;
+namespace Simla\Interfaces;
 
 use Psr\Http\Message\RequestInterface;
-use RetailCrm\Model\Request\BaseRequest;
+use Simla\Component\Exception\FactoryException;
+use Simla\Component\Exception\ValidationException;
+use Simla\Model\Request\BaseRequest;
 
 /**
  * Interface RequestFactoryInterface
  *
  * @category RequestFactoryInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 interface RequestFactoryInterface
 {
     /**
-     * @param \RetailCrm\Model\Request\BaseRequest         $request
-     * @param \RetailCrm\Interfaces\AppDataInterface       $appData
+     * @param BaseRequest         $request
+     * @param AppDataInterface    $appData
      *
      * @return RequestInterface
-     * @throws \RetailCrm\Component\Exception\FactoryException
-     * @throws \RetailCrm\Component\Exception\ValidationException
+     * @throws FactoryException
+     * @throws ValidationException
      */
     public function fromModel(
         BaseRequest $request,

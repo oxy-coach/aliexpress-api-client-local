@@ -1,6 +1,6 @@
 <?php
 
-namespace RetailCrm\Model\Entity;
+namespace Simla\Model\Entity;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -8,7 +8,7 @@ use JMS\Serializer\Annotation as JMS;
  * Class LogisticOrderLineDto
  *
  * @category LogisticOrderLineDto
- * @package  RetailCrm\Model\Entity
+ * @package  Simla\Model\Entity
  */
 class LogisticOrderLineDto
 {

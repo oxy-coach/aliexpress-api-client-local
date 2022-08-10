@@ -4,10 +4,10 @@
  * PHP version 7.3
  *
  * @category ContainerAwareInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 
-namespace RetailCrm\Interfaces;
+namespace Simla\Interfaces;
 
 use Psr\Container\ContainerInterface;
 
@@ -15,19 +15,19 @@ use Psr\Container\ContainerInterface;
  * Interface ContainerAwareInterface
  *
  * @category ContainerAwareInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 interface ContainerAwareInterface
 {
     /**
-     * @param \Psr\Container\ContainerInterface $container
+     * @param ContainerInterface $container
      *
      * @return mixed
      */
     public function setContainer(ContainerInterface $container);
 
     /**
-     * @return \Psr\Container\ContainerInterface
+     * @return ContainerInterface
      */
     public function getContainer(): ContainerInterface;
 }

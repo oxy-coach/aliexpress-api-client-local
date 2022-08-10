@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category Environment
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
-namespace RetailCrm\Component;
+namespace Simla\Component;
 
 use InvalidArgumentException;
 
@@ -14,7 +14,7 @@ use InvalidArgumentException;
  * Class Environment
  *
  * @category Environment
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
 class Environment
 {

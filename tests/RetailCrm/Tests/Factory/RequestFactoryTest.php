@@ -4,19 +4,19 @@
  * PHP version 7.3
  *
  * @category RequestFactoryTest
- * @package  RetailCrm\Tests\Factory
+ * @package  Simla\Tests\Factory
  */
 namespace RetailCrm\Tests\Factory;
 
-use RetailCrm\Factory\RequestFactory;
-use RetailCrm\Interfaces\RequestFactoryInterface;
+use Simla\Factory\RequestFactory;
+use Simla\Interfaces\RequestFactoryInterface;
 use RetailCrm\Test\TestCase;
 
 /**
  * Class RequestFactoryTest
  *
  * @category RequestFactoryTest
- * @package  RetailCrm\Tests\Factory
+ * @package  Simla\Tests\Factory
  */
 class RequestFactoryTest extends TestCase
 {

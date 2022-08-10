@@ -4,7 +4,7 @@
  * PHP version 7.3
  *
  * @category ContainerBuilderTest
- * @package  RetailCrm\Tests\Builder
+ * @package  Simla\Tests\Builder
  */
 namespace RetailCrm\Tests\Builder;
 
@@ -14,17 +14,17 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Log\NullLogger;
-use RetailCrm\Builder\ContainerBuilder;
-use RetailCrm\Component\Constants;
-use RetailCrm\Component\Environment;
-use RetailCrm\Component\Logger\StdoutLogger;
+use Simla\Builder\ContainerBuilder;
+use Simla\Component\Constants;
+use Simla\Component\Environment;
+use Simla\Component\Logger\StdoutLogger;
 use RetailCrm\Test\TestCase;
 
 /**
  * Class ContainerBuilderTest
  *
  * @category ContainerBuilderTest
- * @package  RetailCrm\Tests\Builder
+ * @package  Simla\Tests\Builder
  */
 class ContainerBuilderTest extends TestCase
 {

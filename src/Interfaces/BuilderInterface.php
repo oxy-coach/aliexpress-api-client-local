@@ -4,16 +4,16 @@
  * PHP version 7.3
  *
  * @category BuilderInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 
-namespace RetailCrm\Interfaces;
+namespace Simla\Interfaces;
 
 /**
  * Interface BuilderInterface
  *
  * @category BuilderInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 interface BuilderInterface
 {

@@ -4,18 +4,18 @@
  * PHP version 7.3
  *
  * @category TestDto
- * @package  RetailCrm\Test
+ * @package  Simla\Test
  */
 namespace RetailCrm\Test;
 
 use JMS\Serializer\Annotation as JMS;
-use RetailCrm\Interfaces\RequestDtoInterface;
+use Simla\Interfaces\RequestDtoInterface;
 
 /**
  * Class TestDto
  *
  * @category TestDto
- * @package  RetailCrm\Test
+ * @package  Simla\Test
  */
 class TestDto implements RequestDtoInterface
 {

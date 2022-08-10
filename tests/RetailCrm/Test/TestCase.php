@@ -11,12 +11,12 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use RetailCrm\Builder\ContainerBuilder;
-use RetailCrm\Component\AppData;
-use RetailCrm\Component\Constants;
-use RetailCrm\Component\Environment;
-use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Model\Request\GetOrderListRequest;
+use Simla\Builder\ContainerBuilder;
+use Simla\Component\AppData;
+use Simla\Component\Constants;
+use Simla\Component\Environment;
+use Simla\Interfaces\AppDataInterface;
+use Simla\Model\Request\GetOrderListRequest;
 
 /**
  * Class TestCase
@@ -51,7 +51,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return \RetailCrm\Interfaces\AppDataInterface
+     * @return \Simla\Interfaces\AppDataInterface
      */
     protected function getEnvAppData(): AppDataInterface
     {
@@ -65,7 +65,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      * @param string $endpoint
      * @param string $token
      *
-     * @return \RetailCrm\Interfaces\AppDataInterface
+     * @return \Simla\Interfaces\AppDataInterface
      */
     protected function getAppData(
         string $endpoint = AppData::ENDPOINT,

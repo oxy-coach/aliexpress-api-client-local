@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category Container
- * @package  RetailCrm\Component\DependencyInjection
+ * @package  Simla\Component\DependencyInjection
  */
-namespace RetailCrm\Component\DependencyInjection;
+namespace Simla\Component\DependencyInjection;
 
 use Closure;
 use Psr\Container\ContainerExceptionInterface;
@@ -14,8 +14,8 @@ use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionClass;
 use ReflectionException;
-use RetailCrm\Component\DependencyInjection\Exception\ContainerException;
-use RetailCrm\Component\DependencyInjection\Exception\NotFoundException;
+use Simla\Component\DependencyInjection\Exception\ContainerException;
+use Simla\Component\DependencyInjection\Exception\NotFoundException;
 use Throwable;
 
 /**
@@ -23,7 +23,7 @@ use Throwable;
  * This implementation took an inspiration from devanych/di-container. It's almost the same, but for PHP 7.3.
  *
  * @category Container
- * @package  RetailCrm\Component\DependencyInjection
+ * @package  Simla\Component\DependencyInjection
  * @author   Evgeniy Zyubin <mail@devanych.ru>
  */
 final class Container implements ContainerInterface

@@ -1,4 +1,6 @@
 [![Build Status](https://github.com/oxy-coach/aliexpress-api-client-local/workflows/ci/badge.svg)](https://github.com/retailcrm/aliexpress-top-client/actions)
+[![Latest stable](https://img.shields.io/packagist/v/oxy-coach/aliexpress-api-client-local.svg)](https://packagist.org/packages/oxy-coach/aliexpress-api-client-local)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/oxy-coach/aliexpress-api-client-local.svg)](https://packagist.org/packages/oxy-coach/aliexpress-api-client-local)
 
 # AliExpress API client for new API version
 API client implementation for AliExpress local API.
@@ -12,8 +14,8 @@ Details about those third-party libraries and why you need to install them can b
 
 2. Instantiate client using `ClientFactory`:
 ```php
-use RetailCrm\Component\AppData;
-use RetailCrm\Factory\ClientFactory;
+use Simla\Component\AppData;
+use Simla\Factory\ClientFactory;
 
 $client = ClientFactory::createClient(
     AppData::ENDPOINT,
@@ -24,13 +26,13 @@ $client = ClientFactory::createClient(
 3. Create and fill request data. All requests and responses use the same naming. Requests live under `RetailCrm\Model\Request` namespace, and responses can be found in the `RetailCrm\Model\Response` namespace.
    For example, you can instantiate an **order list request** with this code:
 ```php
-use RetailCrm\Model\Request\GetOrderListRequest;
+use Simla\Model\Request\GetOrderListRequest;
 
 $request = new GetOrderListRequest();
 ```
 4. Send request using `Client::sendRequest` like this:
 ```php
-/** @var \RetailCrm\Model\Response\GetOrderListResponse $response */
+/** @var \Simla\Model\Response\GetOrderListResponse $response */
 $response = $client->sendRequest(new GetOrderListRequest());
 ```
 Each request uses provided `jwt` **token** for authorization.
@@ -41,12 +43,12 @@ Each request uses provided `jwt` **token** for authorization.
 This library uses Container pattern under the hood. You can pass additional dependencies using `ContainerBuilder`. For example:
 ```php
 use Http\Client\Curl\Client;
-use RetailCrm\Component\AppData;
-use RetailCrm\Component\Environment;
+use Simla\Component\AppData;
+use Simla\Component\Environment;
 use Nyholm\Psr7\Factory\Psr17Factory;
-use RetailCrm\Builder\ClientBuilder;
-use RetailCrm\Builder\ContainerBuilder;
-use RetailCrm\Component\Logger\StdoutLogger;
+use Simla\Builder\ClientBuilder;
+use Simla\Builder\ContainerBuilder;
+use Simla\Component\Logger\StdoutLogger;
 
 $client = new Client();
 $logger = new StdoutLogger();
@@ -70,9 +72,9 @@ You can use your own container if you want to - it must be compliant to PSR-11. 
 
 The simplest example of client initialization without using `ClientFactory` looks like this:
 ```php
-use RetailCrm\Component\AppData;
-use RetailCrm\Builder\ClientBuilder;
-use RetailCrm\Builder\ContainerBuilder;
+use Simla\Component\AppData;
+use Simla\Builder\ClientBuilder;
+use Simla\Builder\ContainerBuilder;
 
 $appData = new AppData(AppData::ENDPOINT, 'jwt token');
 $client = ClientBuilder::create()

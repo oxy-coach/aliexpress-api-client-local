@@ -3,7 +3,7 @@
  * PHP version 7.4
  *
  * @category MatcherException
- * @package  RetailCrm\Test
+ * @package  Simla\Test
  */
 
 namespace RetailCrm\Test;
@@ -15,7 +15,7 @@ use Throwable;
  * Class MatcherException
  *
  * @category MatcherException
- * @package  RetailCrm\Test
+ * @package  Simla\Test
  */
 class MatcherException extends Exception
 {

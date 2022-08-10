@@ -1,6 +1,6 @@
 <?php
 
-namespace RetailCrm\Model\Enum;
+namespace Simla\Model\Enum;
 
 class OrderInfoFlags
 {

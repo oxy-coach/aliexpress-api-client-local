@@ -3,10 +3,10 @@
  * PHP version 7.3
  *
  * @category TimezoneValidator
- * @package  RetailCrm\Component\Validator\Constraints
+ * @package  Simla\Component\Validator\Constraints
  */
 
-namespace RetailCrm\Component\Validator\Constraints;
+namespace Simla\Component\Validator\Constraints;
 
 use DateTime;
 use Symfony\Component\Validator\Constraint;
@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Exception\UnexpectedValueException;
  * Class TimezoneValidator
  *
  * @category TimezoneValidator
- * @package  RetailCrm\Component\Validator\Constraints
+ * @package  Simla\Component\Validator\Constraints
  */
 class TimezoneValidator extends ConstraintValidator
 {

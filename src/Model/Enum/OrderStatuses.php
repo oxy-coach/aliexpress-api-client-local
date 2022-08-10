@@ -3,16 +3,16 @@
  * PHP version 7.3
  *
  * @category OrderStatuses
- * @package  RetailCrm\Model\Enum
+ * @package  Simla\Model\Enum
  */
 
-namespace RetailCrm\Model\Enum;
+namespace Simla\Model\Enum;
 
 /**
  * Class OrderStatuses
  *
  * @category OrderStatuses
- * @package  RetailCrm\Model\Enum
+ * @package  Simla\Model\Enum
  */
 class OrderStatuses
 {

@@ -4,15 +4,15 @@
  * PHP version 7.3
  *
  * @category ClientTest
- * @package  RetailCrm\Tests\Client
+ * @package  Simla\Tests\Client
  */
 namespace RetailCrm\Tests\Client;
 
 use Http\Message\RequestMatcher\CallbackRequestMatcher;
-use RetailCrm\Builder\ClientBuilder;
-use RetailCrm\Model\Request\GetOrderListRequest;
-use RetailCrm\Model\Response\ErrorResponseBody;
-use RetailCrm\Model\Response\GetOrderListResponse;
+use Simla\Builder\ClientBuilder;
+use Simla\Model\Request\GetOrderListRequest;
+use Simla\Model\Response\ErrorResponseBody;
+use Simla\Model\Response\GetOrderListResponse;
 use RetailCrm\Test\RequestMatcher;
 use RetailCrm\Test\TestCase;
 
@@ -20,7 +20,7 @@ use RetailCrm\Test\TestCase;
  * Class ClientTest
  *
  * @category ClientTest
- * @package  RetailCrm\Tests\Client
+ * @package  Simla\Tests\Client
  */
 class ClientTest extends TestCase
 {

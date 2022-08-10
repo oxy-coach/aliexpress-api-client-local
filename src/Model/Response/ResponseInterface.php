@@ -4,16 +4,16 @@
  * PHP version 7.3
  *
  * @category ResponseInterface
- * @package  RetailCrm\Model\Response
+ * @package  Simla\Model\Response
  */
 
-namespace RetailCrm\Model\Response;
+namespace Simla\Model\Response;
 
 /**
  * Interface ResponseInterface
  *
  * @category ResponseInterface
- * @package  RetailCrm\Model\Response
+ * @package  Simla\Model\Response
  */
 interface ResponseInterface
 {

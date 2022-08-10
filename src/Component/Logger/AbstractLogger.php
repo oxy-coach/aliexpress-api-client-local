@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category AbstractLogger
- * @package  RetailCrm\Component\Logger
+ * @package  Simla\Component\Logger
  */
-namespace RetailCrm\Component\Logger;
+namespace Simla\Component\Logger;
 
 use Psr\Log\AbstractLogger as BaseAbstractLogger;
 
@@ -14,7 +14,7 @@ use Psr\Log\AbstractLogger as BaseAbstractLogger;
  * Class AbstractLogger
  *
  * @category AbstractLogger
- * @package  RetailCrm\Component\Logger
+ * @package  Simla\Component\Logger
  */
 abstract class AbstractLogger extends BaseAbstractLogger
 {

@@ -3,16 +3,16 @@
  * PHP version 7.3
  *
  * @category DropshippingAreas
- * @package  RetailCrm\Model\Enum
+ * @package  Simla\Model\Enum
  */
 
-namespace RetailCrm\Model\Enum;
+namespace Simla\Model\Enum;
 
 /**
  * Class DropshippingAreas
  *
  * @category DropshippingAreas
- * @package  RetailCrm\Model\Enum
+ * @package  Simla\Model\Enum
  */
 class DropshippingAreas
 {

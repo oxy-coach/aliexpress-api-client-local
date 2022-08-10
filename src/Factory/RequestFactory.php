@@ -4,31 +4,32 @@
  * PHP version 7.3
  *
  * @category RequestFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  */
-namespace RetailCrm\Factory;
+namespace Simla\Factory;
 
 use JMS\Serializer\SerializerInterface;
+use JMS\Serializer\Serializer;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
-use RetailCrm\Component\Exception\FactoryException;
-use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\RequestFactoryInterface as LocalRequestFactoryInterface;
-use RetailCrm\Model\Request\BaseRequest;
+use Simla\Component\Exception\FactoryException;
+use Simla\Interfaces\AppDataInterface;
+use Simla\Interfaces\RequestFactoryInterface as LocalRequestFactoryInterface;
+use Simla\Model\Request\BaseRequest;
 
 /**
  * Class RequestFactory
  *
  * @category RequestFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class RequestFactory implements LocalRequestFactoryInterface
 {
     /**
-     * @var SerializerInterface|\JMS\Serializer\Serializer $serializer
+     * @var SerializerInterface|Serializer $serializer
      */
     private $serializer;
 
@@ -38,17 +39,17 @@ class RequestFactory implements LocalRequestFactoryInterface
     private $streamFactory;
 
     /**
-     * @var \Psr\Http\Message\RequestFactoryInterface $requestFactory
+     * @var RequestFactoryInterface $requestFactory
      */
     private $requestFactory;
 
     /**
-     * @var \Psr\Http\Message\UriFactoryInterface $uriFactory
+     * @var UriFactoryInterface $uriFactory
      */
     private $uriFactory;
 
     /**
-     * @param \JMS\Serializer\Serializer|\JMS\Serializer\SerializerInterface $serializer
+     * @param Serializer|SerializerInterface $serializer
      *
      * @return RequestFactory
      */
@@ -59,7 +60,7 @@ class RequestFactory implements LocalRequestFactoryInterface
     }
 
     /**
-     * @param \Psr\Http\Message\StreamFactoryInterface $streamFactory
+     * @param StreamFactoryInterface $streamFactory
      *
      * @return RequestFactory
      */
@@ -70,7 +71,7 @@ class RequestFactory implements LocalRequestFactoryInterface
     }
 
     /**
-     * @param \Psr\Http\Message\RequestFactoryInterface $requestFactory
+     * @param RequestFactoryInterface $requestFactory
      *
      * @return RequestFactory
      */
@@ -81,7 +82,7 @@ class RequestFactory implements LocalRequestFactoryInterface
     }
 
     /**
-     * @param \Psr\Http\Message\UriFactoryInterface $uriFactory
+     * @param UriFactoryInterface $uriFactory
      *
      * @return RequestFactory
      */
@@ -92,11 +93,11 @@ class RequestFactory implements LocalRequestFactoryInterface
     }
 
     /**
-     * @param \RetailCrm\Model\Request\BaseRequest         $request
-     * @param \RetailCrm\Interfaces\AppDataInterface       $appData
+     * @param BaseRequest         $request
+     * @param AppDataInterface    $appData
      *
-     * @return \Psr\Http\Message\RequestInterface
-     * @throws \RetailCrm\Component\Exception\FactoryException
+     * @return RequestInterface
+     * @throws FactoryException
      */
     public function fromModel(
         BaseRequest $request,

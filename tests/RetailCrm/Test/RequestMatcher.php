@@ -3,7 +3,7 @@
  * PHP version 7.4
  *
  * @category RequestMatcher
- * @package  RetailCrm\Test
+ * @package  Simla\Test
  */
 
 namespace RetailCrm\Test;
@@ -15,7 +15,7 @@ use Psr\Http\Message\RequestInterface;
  * Class RequestMatcher
  *
  * @category RequestMatcher
- * @package  RetailCrm\Test
+ * @package  Simla\Test
  */
 class RequestMatcher implements RequestMatcherInterface
 {
@@ -57,7 +57,7 @@ class RequestMatcher implements RequestMatcherInterface
     /**
      * @param string $host
      *
-     * @return \RetailCrm\Test\RequestMatcher
+     * @return \Simla\Test\RequestMatcher
      */
     public static function createMatcher(string $host): RequestMatcher
     {

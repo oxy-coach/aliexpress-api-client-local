@@ -4,20 +4,20 @@
  * PHP version 7.4
  *
  * @category ClientBuilderTest
- * @package  RetailCrm\Tests\Builder
+ * @package  Simla\Tests\Builder
  */
 namespace RetailCrm\Tests\Builder;
 
-use RetailCrm\Component\AppData;
-use RetailCrm\Builder\ClientBuilder;
+use Simla\Component\AppData;
+use Simla\Builder\ClientBuilder;
 use RetailCrm\Test\TestCase;
-use RetailCrm\Client\Client;
+use Simla\Client\Client;
 
 /**
  * Class ClientBuilderTest
  *
  * @category ClientBuilderTest
- * @package  RetailCrm\Tests\Builder
+ * @package  Simla\Tests\Builder
  */
 class ClientBuilderTest extends TestCase
 {

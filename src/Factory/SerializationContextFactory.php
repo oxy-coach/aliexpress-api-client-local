@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category SerializationContextFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  */
-namespace RetailCrm\Factory;
+namespace Simla\Factory;
 
 use JMS\Serializer\ContextFactory\SerializationContextFactoryInterface;
 use JMS\Serializer\SerializationContext;
@@ -15,7 +15,7 @@ use JMS\Serializer\SerializationContext;
  * Class SerializationContextFactory
  *
  * @category SerializationContextFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  */
 class SerializationContextFactory implements SerializationContextFactoryInterface
 {

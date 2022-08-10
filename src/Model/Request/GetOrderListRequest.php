@@ -1,17 +1,17 @@
 <?php
 
-namespace RetailCrm\Model\Request;
+namespace Simla\Model\Request;
 
 use JMS\Serializer\Annotation as JMS;
-use RetailCrm\Component\Constants;
-use RetailCrm\Model\Response\GetOrderListResponse;
+use Simla\Component\Constants;
+use Simla\Model\Response\GetOrderListResponse;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class GetOrderListRequest
  *
  * @category GetOrderListRequest
- * @package  RetailCrm\Model\Request
+ * @package  Simla\Model\Request
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
 class GetOrderListRequest extends BaseRequest
@@ -59,7 +59,7 @@ class GetOrderListRequest extends BaseRequest
      *
      * @JMS\Type("array<string>")
      * @JMS\SerializedName("order_statuses")
-     * @Assert\Choice(choices=RetailCrm\Model\Enum\OrderStatuses::STATUSES_LIST, multiple=true)
+     * @Assert\Choice(choices=Simla\Model\Enum\OrderStatuses::STATUSES_LIST, multiple=true)
      */
     public $orderStatuses;
 
@@ -68,7 +68,7 @@ class GetOrderListRequest extends BaseRequest
      *
      * @JMS\Type("array<string>")
      * @JMS\SerializedName("payment_statuses")
-     * @Assert\Choice(choices=RetailCrm\Model\Enum\PaymentStatuses::STATUSES_LIST, multiple=true)
+     * @Assert\Choice(choices=Simla\Model\Enum\PaymentStatuses::STATUSES_LIST, multiple=true)
      */
     public $paymentStatuses;
 
@@ -77,7 +77,7 @@ class GetOrderListRequest extends BaseRequest
      *
      * @JMS\Type("array<string>")
      * @JMS\SerializedName("delivery_statuses")
-     * @Assert\Choice(choices=RetailCrm\Model\Enum\DeliveryStatuses::STATUSES_LIST, multiple=true)
+     * @Assert\Choice(choices=Simla\Model\Enum\DeliveryStatuses::STATUSES_LIST, multiple=true)
      */
     public $deliveryStatuses;
 
@@ -86,7 +86,7 @@ class GetOrderListRequest extends BaseRequest
      *
      * @JMS\Type("array<string>")
      * @JMS\SerializedName("antifraud_statuses")
-     * @Assert\Choice(choices=RetailCrm\Model\Enum\AntifraudStatuses::STATUSES_LIST, multiple=true)
+     * @Assert\Choice(choices=Simla\Model\Enum\AntifraudStatuses::STATUSES_LIST, multiple=true)
      */
     public $antifraudStatuses;
 
@@ -159,7 +159,7 @@ class GetOrderListRequest extends BaseRequest
      *
      * @JMS\Type("string")
      * @JMS\SerializedName("trade_order_info")
-     * @Assert\Choice(choices=RetailCrm\Model\Enum\OrderInfoFlags::LIST)
+     * @Assert\Choice(choices=Simla\Model\Enum\OrderInfoFlags::LIST)
      */
     public $tradeOrderInfo;
 

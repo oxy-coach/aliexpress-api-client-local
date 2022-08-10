@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category ValidationException
- * @package  RetailCrm\Component\Exception
+ * @package  Simla\Component\Exception
  */
-namespace RetailCrm\Component\Exception;
+namespace Simla\Component\Exception;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Throwable;
@@ -15,22 +15,22 @@ use Throwable;
  * Class ValidationException
  *
  * @category ValidationException
- * @package  RetailCrm\Component\Exception
+ * @package  Simla\Component\Exception
  */
 class ValidationException extends \Exception
 {
     /**
-     * @var \Symfony\Component\Validator\ConstraintViolationListInterface|null
+     * @var ConstraintViolationListInterface|null
      */
     private $violations;
 
     /**
      * ValidationException constructor.
      *
-     * @param string                                                             $message
-     * @param \Symfony\Component\Validator\ConstraintViolationListInterface|null $violations
-     * @param int                                                                $code
-     * @param \Throwable|null                                                    $previous
+     * @param string                                $message
+     * @param ConstraintViolationListInterface|null $violations
+     * @param int                                   $code
+     * @param Throwable|null                        $previous
      */
     public function __construct(
         $message = "",
@@ -44,7 +44,7 @@ class ValidationException extends \Exception
     }
 
     /**
-     * @return \Symfony\Component\Validator\ConstraintViolationListInterface|null
+     * @return ConstraintViolationListInterface|null
      */
     public function getViolations(): ?ConstraintViolationListInterface
     {

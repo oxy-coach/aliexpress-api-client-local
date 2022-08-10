@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category ClientException
- * @package  RetailCrm\Component\Exception
+ * @package  Simla\Component\Exception
  */
-namespace RetailCrm\Component\Exception;
+namespace Simla\Component\Exception;
 
 use Exception;
 
@@ -14,7 +14,7 @@ use Exception;
  * Class ClientException
  *
  * @category ClientException
- * @package  RetailCrm\Component\Exception
+ * @package  Simla\Component\Exception
  */
 class ClientException extends Exception
 {

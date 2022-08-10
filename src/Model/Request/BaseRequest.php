@@ -4,19 +4,19 @@
  * PHP version 7.3
  *
  * @category BaseRequest
- * @package  RetailCrm\Model\Request
+ * @package  Simla\Model\Request
  */
-namespace RetailCrm\Model\Request;
+namespace Simla\Model\Request;
 
 use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\Validator\Constraints as Assert;
-use RetailCrm\Component\Validator\Constraints as TopAssert;
+use Simla\Component\Validator\Constraints as TopAssert;
 
 /**
  * Class BaseRequest
  *
  * @category BaseRequest
- * @package  RetailCrm\Model\Request
+ * @package  Simla\Model\Request
  */
 abstract class BaseRequest
 {

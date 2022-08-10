@@ -4,10 +4,10 @@
  * PHP version 7.3
  *
  * @category ContainerAwareTrait
- * @package  RetailCrm\Traits
+ * @package  Simla\Traits
  */
 
-namespace RetailCrm\Traits;
+namespace Simla\Traits;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Trait ContainerAwareTrait
  *
  * @category ContainerAwareTrait
- * @package  RetailCrm\Traits
+ * @package  Simla\Traits
  */
 trait ContainerAwareTrait
 {
@@ -27,9 +27,9 @@ trait ContainerAwareTrait
     protected $container;
 
     /**
-     * @param \Psr\Container\ContainerInterface $container
+     * @param ContainerInterface $container
      *
-     * @return \RetailCrm\Traits\ContainerAwareTrait
+     * @return ContainerAwareTrait
      */
     public function setContainer(ContainerInterface $container): self
     {
@@ -38,7 +38,7 @@ trait ContainerAwareTrait
     }
 
     /**
-     * @return \Psr\Container\ContainerInterface
+     * @return ContainerInterface
      */
     public function getContainer(): ContainerInterface
     {

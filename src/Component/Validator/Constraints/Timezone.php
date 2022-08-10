@@ -3,10 +3,10 @@
  * PHP version 7.3
  *
  * @category Timezone
- * @package  RetailCrm\Component\Validator\Constraints
+ * @package  Simla\Component\Validator\Constraints
  */
 
-namespace RetailCrm\Component\Validator\Constraints;
+namespace Simla\Component\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraint;
  * Class Timezone
  *
  * @category Timezone
- * @package  RetailCrm\Component\Validator\Constraints
+ * @package  Simla\Component\Validator\Constraints
  *
  * @Annotation
  * @Target({"PROPERTY", "METHOD", "ANNOTATION"})

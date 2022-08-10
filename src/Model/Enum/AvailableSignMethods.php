@@ -3,16 +3,16 @@
  * PHP version 7.3
  *
  * @category AvailableSignMethods
- * @package  RetailCrm\Model\Enum
+ * @package  Simla\Model\Enum
  */
 
-namespace RetailCrm\Model\Enum;
+namespace Simla\Model\Enum;
 
 /**
  * Class AvailableSignMethods
  *
  * @category AvailableSignMethods
- * @package  RetailCrm\Model\Enum
+ * @package  Simla\Model\Enum
  */
 class AvailableSignMethods
 {

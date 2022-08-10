@@ -3,10 +3,10 @@
  * PHP version 7.3
  *
  * @category TimezoneDeserializeSubscriber
- * @package  RetailCrm\Component\JMS\EventSubscriber
+ * @package  Simla\Component\JMS\EventSubscriber
  */
 
-namespace RetailCrm\Component\JMS\EventSubscriber;
+namespace Simla\Component\JMS\EventSubscriber;
 
 use DateTime;
 use DateTimeInterface;
@@ -18,7 +18,7 @@ use JMS\Serializer\EventDispatcher\ObjectEvent;
  * Class TimezoneDeserializeSubscriber
  *
  * @category TimezoneDeserializeSubscriber
- * @package  RetailCrm\Component\JMS\EventSubscriber
+ * @package  Simla\Component\JMS\EventSubscriber
  */
 class TimezoneDeserializeSubscriber implements EventSubscriberInterface
 {

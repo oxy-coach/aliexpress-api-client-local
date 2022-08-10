@@ -4,15 +4,15 @@
  * PHP version 7.3
  *
  * @category Constants
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
-namespace RetailCrm\Component;
+namespace Simla\Component;
 
 /**
  * Class Constants
  *
  * @category Constants
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
 class Constants
 {

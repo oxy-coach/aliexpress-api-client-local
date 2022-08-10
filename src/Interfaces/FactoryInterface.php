@@ -4,16 +4,16 @@
  * PHP version 7.3
  *
  * @category FactoryInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 
-namespace RetailCrm\Interfaces;
+namespace Simla\Interfaces;
 
 /**
  * Interface FactoryInterface
  *
  * @category FactoryInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 interface FactoryInterface
 {

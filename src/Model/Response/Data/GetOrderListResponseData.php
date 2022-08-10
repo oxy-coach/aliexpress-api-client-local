@@ -1,8 +1,9 @@
 <?php
 
-namespace RetailCrm\Model\Response\Data;
+namespace Simla\Model\Response\Data;
 
 use JMS\Serializer\Annotation as JMS;
+use Simla\Model\Entity\OrderDto;
 
 class GetOrderListResponseData
 {
@@ -15,9 +16,9 @@ class GetOrderListResponseData
     public $totalCount;
 
     /**
-     * @var \RetailCrm\Model\Entity\OrderDto[] $orders
+     * @var OrderDto[] $orders
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\OrderDto>")
+     * @JMS\Type("array<Simla\Model\Entity\OrderDto>")
      * @JMS\SerializedName("orders")
      */
     public $orders;

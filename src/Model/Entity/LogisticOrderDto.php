@@ -1,6 +1,6 @@
 <?php
 
-namespace RetailCrm\Model\Entity;
+namespace Simla\Model\Entity;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -8,7 +8,7 @@ use JMS\Serializer\Annotation as JMS;
  * Class LogisticOrderDto
  *
  * @category LogisticOrderDto
- * @package  RetailCrm\Model\Entity
+ * @package  Simla\Model\Entity
  */
 class LogisticOrderDto
 {
@@ -45,17 +45,17 @@ class LogisticOrderDto
     public $status;
 
     /**
-     * @var \RetailCrm\Model\Entity\CreationError $creationError
+     * @var CreationError $creationError
      *
-     * @JMS\Type("RetailCrm\Model\Entity\CreationError")
+     * @JMS\Type("Simla\Model\Entity\CreationError")
      * @JMS\SerializedName("creation_error")
      */
     public $creationError;
 
     /**
-     * @var \RetailCrm\Model\Entity\LogisticOrderLineDto[] $lines
+     * @var LogisticOrderLineDto[] $lines
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\LogisticOrderLineDto>")
+     * @JMS\Type("array<Simla\Model\Entity\LogisticOrderLineDto>")
      * @JMS\SerializedName("lines")
      */
     public $lines;

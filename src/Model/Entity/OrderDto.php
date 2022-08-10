@@ -3,10 +3,10 @@
  * PHP version 7.3
  *
  * @category OrderDto
- * @package  RetailCrm\Model\Entity
+ * @package  Simla\Model\Entity
  */
 
-namespace RetailCrm\Model\Entity;
+namespace Simla\Model\Entity;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation as JMS;
  * Class OrderDto
  *
  * @category OrderDto
- * @package  RetailCrm\Model\Entity
+ * @package  Simla\Model\Entity
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
 class OrderDto
@@ -124,9 +124,9 @@ class OrderDto
     public $buyerPhone;
 
     /**
-     * @var \RetailCrm\Model\Entity\OrderProductDto[] $orderLines
+     * @var OrderProductDto[] $orderLines
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\OrderProductDto>")
+     * @JMS\Type("array<Simla\Model\Entity\OrderProductDto>")
      * @JMS\SerializedName("order_lines")
      */
     public $orderLines;
@@ -172,9 +172,9 @@ class OrderDto
     public $cutOffDate;
 
     /**
-     * @var \RetailCrm\Model\Entity\CutOffDateDto[] $cutOffDateHistories
+     * @var CutOffDateDto[] $cutOffDateHistories
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\CutOffDateDto>")
+     * @JMS\Type("array<Simla\Model\Entity\CutOffDateDto>")
      * @JMS\SerializedName("cut_off_date_histories")
      */
     public $cutOffDateHistories;
@@ -196,25 +196,25 @@ class OrderDto
     public $nextCutOffDate;
 
     /**
-     * @var \RetailCrm\Model\Entity\PreSplitPostingDto[] $preSplitPostings
+     * @var PreSplitPostingDto[] $preSplitPostings
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\PreSplitPostingDto>")
+     * @JMS\Type("array<Simla\Model\Entity\PreSplitPostingDto>")
      * @JMS\SerializedName("pre_split_postings")
      */
     public $preSplitPostings;
 
     /**
-     * @var \RetailCrm\Model\Entity\LogisticOrderDto[] $logisticOrders
+     * @var LogisticOrderDto[] $logisticOrders
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\LogisticOrderDto>")
+     * @JMS\Type("array<Simla\Model\Entity\LogisticOrderDto>")
      * @JMS\SerializedName("logistic_orders")
      */
     public $logisticOrders;
 
     /**
-     * @var \RetailCrm\Model\Entity\CommissionDto $commission
+     * @var CommissionDto $commission
      *
-     * @JMS\Type("RetailCrm\Model\Entity\CommissionDto")
+     * @JMS\Type("Simla\Model\Entity\CommissionDto")
      * @JMS\SerializedName("commission")
      */
     public $commission;

@@ -4,18 +4,18 @@
  * PHP version 7.3
  *
  * @category AppData
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
-namespace RetailCrm\Component;
+namespace Simla\Component;
 
-use RetailCrm\Interfaces\AppDataInterface;
+use Simla\Interfaces\AppDataInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class AppData
  *
  * @category AppData
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
 class AppData implements AppDataInterface
 {

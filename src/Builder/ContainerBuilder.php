@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category ContainerBuilder
- * @package  RetailCrm\Builder
+ * @package  Simla\Builder
  */
-namespace RetailCrm\Builder;
+namespace Simla\Builder;
 
 use Cache\Adapter\PHPArray\ArrayCachePool;
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -19,15 +19,15 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use RetailCrm\Component\Constants;
-use RetailCrm\Component\DependencyInjection\Container;
-use RetailCrm\Component\Environment;
-use RetailCrm\Factory\SerializerFactory;
-use RetailCrm\Factory\RequestFactory;
-use RetailCrm\Interfaces\BuilderInterface;
-use RetailCrm\Interfaces\RequestTimestampProviderInterface;
-use RetailCrm\Interfaces\RequestFactoryInterface as LocalRequestFactoryInterface;
-use RetailCrm\Service\RequestTimestampProvider;
+use Simla\Component\Constants;
+use Simla\Component\DependencyInjection\Container;
+use Simla\Component\Environment;
+use Simla\Factory\SerializerFactory;
+use Simla\Factory\RequestFactory;
+use Simla\Interfaces\BuilderInterface;
+use Simla\Interfaces\RequestTimestampProviderInterface;
+use Simla\Interfaces\RequestFactoryInterface as LocalRequestFactoryInterface;
+use Simla\Service\RequestTimestampProvider;
 use RuntimeException;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\TraceableValidator;
@@ -37,7 +37,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * Class ContainerBuilder
  *
  * @category ContainerBuilder
- * @package  RetailCrm\Builder
+ * @package  Simla\Builder
  *
  * ContainerBuilder should be like that.
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -50,12 +50,12 @@ class ContainerBuilder implements BuilderInterface
     private $env = Environment::DEV;
 
     /**
-     * @var \Psr\Http\Client\ClientInterface $httpClient
+     * @var ClientInterface $httpClient
      */
     private $httpClient;
 
     /**
-     * @var \Psr\Log\LoggerInterface $logger
+     * @var LoggerInterface $logger
      */
     private $logger;
 
@@ -97,9 +97,9 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @param \Psr\Http\Client\ClientInterface $httpClient
+     * @param ClientInterface $httpClient
      *
-     * @return \RetailCrm\Builder\ContainerBuilder
+     * @return ContainerBuilder
      */
     public function setClient(ClientInterface $httpClient): ContainerBuilder
     {
@@ -108,7 +108,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @param \Psr\Log\LoggerInterface $logger
+     * @param LoggerInterface $logger
      *
      * @return ContainerBuilder
      */
@@ -119,7 +119,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @param \Psr\Http\Message\StreamFactoryInterface $streamFactory
+     * @param StreamFactoryInterface $streamFactory
      *
      * @return ContainerBuilder
      */
@@ -130,7 +130,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @param \Psr\Http\Message\RequestFactoryInterface $requestFactory
+     * @param RequestFactoryInterface $requestFactory
      *
      * @return ContainerBuilder
      */
@@ -141,7 +141,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @param \Psr\Http\Message\UriFactoryInterface $uriFactory
+     * @param UriFactoryInterface $uriFactory
      *
      * @return ContainerBuilder
      */
@@ -152,7 +152,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @param \Psr\Cache\CacheItemPoolInterface $cache
+     * @param CacheItemPoolInterface $cache
      *
      * @return ContainerBuilder
      */
@@ -163,7 +163,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @return \Psr\Container\ContainerInterface
+     * @return ContainerInterface
      */
     public function build(): ContainerInterface
     {
@@ -227,7 +227,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @return \Psr\Http\Client\ClientInterface
+     * @return ClientInterface
      */
     protected function getHttpClient(): ClientInterface
     {
@@ -235,7 +235,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @return \Psr\Log\LoggerInterface
+     * @return LoggerInterface
      */
     protected function getLogger(): LoggerInterface
     {
@@ -243,7 +243,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @return \Psr\Http\Message\StreamFactoryInterface
+     * @return StreamFactoryInterface
      */
     protected function getStreamFactory(): StreamFactoryInterface
     {
@@ -253,7 +253,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @return \Psr\Http\Message\RequestFactoryInterface
+     * @return RequestFactoryInterface
      */
     protected function getRequestFactory(): RequestFactoryInterface
     {
@@ -263,7 +263,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @return \Psr\Http\Message\UriFactoryInterface
+     * @return UriFactoryInterface
      */
     protected function getUriFactory(): UriFactoryInterface
     {
@@ -273,7 +273,7 @@ class ContainerBuilder implements BuilderInterface
     }
 
     /**
-     * @return \Psr\Cache\CacheItemPoolInterface
+     * @return CacheItemPoolInterface
      */
     protected function getCache(): CacheItemPoolInterface
     {

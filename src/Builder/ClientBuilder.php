@@ -4,30 +4,31 @@
  * PHP version 7.3
  *
  * @category ClientBuilder
- * @package  RetailCrm\Builder
+ * @package  Simla\Builder
  */
-namespace RetailCrm\Builder;
+namespace Simla\Builder;
 
-use RetailCrm\Component\Constants;
-use RetailCrm\Component\Environment;
-use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\BuilderInterface;
-use RetailCrm\Interfaces\ContainerAwareInterface;
-use RetailCrm\Interfaces\RequestFactoryInterface;
-use RetailCrm\Client\Client;
-use RetailCrm\Traits\ContainerAwareTrait;
+use Simla\Component\Constants;
+use Simla\Component\Environment;
+use Simla\Component\Exception\ValidationException;
+use Simla\Interfaces\AppDataInterface;
+use Simla\Interfaces\BuilderInterface;
+use Simla\Interfaces\ContainerAwareInterface;
+use Simla\Interfaces\RequestFactoryInterface;
+use Simla\Client\Client;
+use Simla\Traits\ContainerAwareTrait;
 
 /**
  * Class ClientBuilder
  *
  * @category ClientBuilder
- * @package  RetailCrm\Builder
+ * @package  Simla\Builder
  */
 class ClientBuilder implements ContainerAwareInterface, BuilderInterface
 {
     use ContainerAwareTrait;
 
-    /** @var \RetailCrm\Interfaces\AppDataInterface $appData */
+    /** @var AppDataInterface $appData */
     private $appData;
 
     /**
@@ -39,7 +40,7 @@ class ClientBuilder implements ContainerAwareInterface, BuilderInterface
     }
 
     /**
-     * @param \RetailCrm\Interfaces\AppDataInterface $appData
+     * @param AppDataInterface $appData
      *
      * @return ClientBuilder
      */
@@ -50,8 +51,8 @@ class ClientBuilder implements ContainerAwareInterface, BuilderInterface
     }
 
     /**
-     * @return \RetailCrm\Client\Client
-     * @throws \RetailCrm\Component\Exception\ValidationException
+     * @return Client
+     * @throws ValidationException
      */
     public function build(): Client
     {

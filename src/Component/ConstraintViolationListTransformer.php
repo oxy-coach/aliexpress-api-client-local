@@ -3,25 +3,26 @@
  * PHP version 7.3
  *
  * @category ConstraintViolationListTransformer
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
 
-namespace RetailCrm\Component;
+namespace Simla\Component;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
+use Symfony\Component\Validator\ConstraintViolationInterface;
 
 /**
  * Class ConstraintViolationListTransformer
  *
  * @category ConstraintViolationListTransformer
- * @package  RetailCrm\Component
+ * @package  Simla\Component
  */
 class ConstraintViolationListTransformer
 {
     /**
      * Returns property names with their respective errors.
      *
-     * @param \Symfony\Component\Validator\ConstraintViolationListInterface $violationList
+     * @param ConstraintViolationListInterface $violationList
      *
      * @return array
      */
@@ -29,7 +30,7 @@ class ConstraintViolationListTransformer
     {
         $violations = [];
 
-        /** @var \Symfony\Component\Validator\ConstraintViolationInterface $violation */
+        /** @var ConstraintViolationInterface $violation */
         foreach ($violationList as $violation) {
             $violations[$violation->getPropertyPath()] = (string) $violation->getMessage();
         }

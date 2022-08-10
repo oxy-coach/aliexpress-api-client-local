@@ -4,20 +4,20 @@
  * PHP version 7.3
  *
  * @category ValidatorAwareTrait
- * @package  RetailCrm\Traits
+ * @package  Simla\Traits
  */
 
-namespace RetailCrm\Traits;
+namespace Simla\Traits;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use RetailCrm\Component\Exception\ValidationException;
+use Simla\Component\Exception\ValidationException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Trait ValidatorAwareTrait
  *
  * @category ValidatorAwareTrait
- * @package  RetailCrm\Traits
+ * @package  Simla\Traits
  */
 trait ValidatorAwareTrait
 {
@@ -28,7 +28,7 @@ trait ValidatorAwareTrait
     protected $validator;
 
     /**
-     * @param \Symfony\Component\Validator\Validator\ValidatorInterface $validator
+     * @param ValidatorInterface $validator
      *
      * @return $this
      */
@@ -41,7 +41,7 @@ trait ValidatorAwareTrait
     /**
      * @param mixed $item
      *
-     * @throws \RetailCrm\Component\Exception\ValidationException
+     * @throws ValidationException
      */
     protected function validate($item): void
     {

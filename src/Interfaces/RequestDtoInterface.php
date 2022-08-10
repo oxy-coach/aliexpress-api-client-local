@@ -4,16 +4,16 @@
  * PHP version 7.3
  *
  * @category RequestDtoInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 
-namespace RetailCrm\Interfaces;
+namespace Simla\Interfaces;
 
 /**
  * Interface RequestDtoInterface
  *
  * @category RequestDtoInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 interface RequestDtoInterface
 {

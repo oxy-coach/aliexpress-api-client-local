@@ -4,18 +4,22 @@
  * PHP version 7.3
  *
  * @category ClientInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
-namespace RetailCrm\Interfaces;
+namespace Simla\Interfaces;
 
-use RetailCrm\Model\Request\BaseRequest;
-use RetailCrm\Model\Response\ResponseInterface;
+use Simla\Model\Request\BaseRequest;
+use Simla\Model\Response\ResponseInterface;
+use Simla\Component\Exception\ValidationException;
+use Simla\Component\Exception\FactoryException;
+use Simla\Component\Exception\ClientException;
+use Simla\Component\Exception\LocalApiException;
 
 /**
  * Class ClientInterface
  *
  * @category ContainerBuilder
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  *
  */
 interface ClientInterface
@@ -23,13 +27,13 @@ interface ClientInterface
     /**
      * Send TOP request
      *
-     * @param \RetailCrm\Model\Request\BaseRequest $request
+     * @param BaseRequest $request
      *
      * @return ResponseInterface
-     * @throws \RetailCrm\Component\Exception\ValidationException
-     * @throws \RetailCrm\Component\Exception\FactoryException
-     * @throws \RetailCrm\Component\Exception\ClientException
-     * @throws \RetailCrm\Component\Exception\LocalApiException
+     * @throws ValidationException
+     * @throws FactoryException
+     * @throws ClientException
+     * @throws LocalApiException
      */
     public function sendRequest(BaseRequest $request): ResponseInterface;
 }

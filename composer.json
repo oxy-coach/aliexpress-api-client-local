@@ -14,7 +14,7 @@
         "email": "support@retailcrm.pro"
     },
     "autoload": {
-        "psr-4": { "RetailCrm\\": "src/" }
+        "psr-4": { "Simla\\": "src/" }
     },
     "require": {
         "php": ">=7.3.0",

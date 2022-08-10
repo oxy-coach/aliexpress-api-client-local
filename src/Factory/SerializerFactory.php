@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category SerializerFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  */
-namespace RetailCrm\Factory;
+namespace Simla\Factory;
 
 use JMS\Serializer\EventDispatcher\EventDispatcher;
 use JMS\Serializer\GraphNavigatorInterface;
@@ -16,10 +16,10 @@ use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
 use JMS\Serializer\Visitor\Factory\JsonSerializationVisitorFactory;
 use Psr\Container\ContainerInterface;
-use RetailCrm\Component\Constants;
-use RetailCrm\Component\JMS\EventSubscriber\TimezoneDeserializeSubscriber;
-use RetailCrm\Component\JMS\Factory\JsonDeserializationVisitorFactory;
-use RetailCrm\Interfaces\FactoryInterface;
+use Simla\Component\Constants;
+use Simla\Component\JMS\EventSubscriber\TimezoneDeserializeSubscriber;
+use Simla\Component\JMS\Factory\JsonDeserializationVisitorFactory;
+use Simla\Interfaces\FactoryInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use JMS\Serializer\Expression\ExpressionEvaluator;
 
@@ -27,19 +27,19 @@ use JMS\Serializer\Expression\ExpressionEvaluator;
  * Class SerializerFactory
  *
  * @category SerializerFactory
- * @package  RetailCrm\Factory
+ * @package  Simla\Factory
  */
 class SerializerFactory implements FactoryInterface
 {
     /**
-     * @var \Psr\Container\ContainerInterface $container
+     * @var ContainerInterface $container
      */
     private $container;
 
     /**
      * SerializerFactory constructor.
      *
-     * @param \Psr\Container\ContainerInterface $container
+     * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
     {
@@ -47,9 +47,9 @@ class SerializerFactory implements FactoryInterface
     }
 
     /**
-     * @param \Psr\Container\ContainerInterface $container
+     * @param ContainerInterface $container
      *
-     * @return \RetailCrm\Factory\SerializerFactory
+     * @return SerializerFactory
      */
     public static function withContainer(ContainerInterface $container): FactoryInterface
     {
@@ -57,7 +57,7 @@ class SerializerFactory implements FactoryInterface
     }
 
     /**
-     * @return \JMS\Serializer\Serializer
+     * @return Serializer
      */
     public function create(): Serializer
     {

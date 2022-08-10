@@ -4,25 +4,25 @@
  * PHP version 7.3
  *
  * @category RequestTimestampProviderInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 
-namespace RetailCrm\Interfaces;
+namespace Simla\Interfaces;
 
-use RetailCrm\Model\Request\BaseRequest;
+use Simla\Model\Request\BaseRequest;
 
 /**
  * Interface RequestTimestampProviderInterface
  *
  * @category RequestTimestampProviderInterface
- * @package  RetailCrm\Interfaces
+ * @package  Simla\Interfaces
  */
 interface RequestTimestampProviderInterface
 {
     /**
      * Sets current timestamp in GMT +8 timezone in the request
      *
-     * @param \RetailCrm\Model\Request\BaseRequest $request
+     * @param BaseRequest $request
      *
      * @return void
      */

@@ -4,15 +4,15 @@
  * PHP version 7.3
  *
  * @category FileLogger
- * @package  RetailCrm\Component\Logger
+ * @package  Simla\Component\Logger
  */
-namespace RetailCrm\Component\Logger;
+namespace Simla\Component\Logger;
 
 /**
  * Class FileLogger
  *
  * @category FileLogger
- * @package  RetailCrm\Component\Logger
+ * @package  Simla\Component\Logger
  */
 class FileLogger extends AbstractLogger
 {

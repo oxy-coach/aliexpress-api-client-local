@@ -4,19 +4,19 @@
  * PHP version 7.3
  *
  * @category LocalApiException
- * @package  RetailCrm\Component\Exception
+ * @package  Simla\Component\Exception
  */
-namespace RetailCrm\Component\Exception;
+namespace Simla\Component\Exception;
 
 use Exception;
-use RetailCrm\Model\Response\ErrorResponseBody;
+use Simla\Model\Response\ErrorResponseBody;
 use Throwable;
 
 /**
  * Class LocalApiException
  *
  * @category LocalApiException
- * @package  RetailCrm\Component\Exception
+ * @package  Simla\Component\Exception
  */
 class LocalApiException extends Exception
 {
@@ -28,8 +28,8 @@ class LocalApiException extends Exception
     /**
      * LocalApiException constructor.
      *
-     * @param \RetailCrm\Model\Response\ErrorResponseBody $responseBody
-     * @param \Throwable|null                             $previous
+     * @param ErrorResponseBody $responseBody
+     * @param Throwable|null    $previous
      */
     public function __construct(ErrorResponseBody $responseBody, Throwable $previous = null)
     {
@@ -39,7 +39,7 @@ class LocalApiException extends Exception
     }
 
     /**
-     * @return \RetailCrm\Model\Response\ErrorResponseBody
+     * @return ErrorResponseBody
      */
     public function getError(): ErrorResponseBody
     {

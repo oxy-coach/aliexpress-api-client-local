@@ -1,6 +1,6 @@
 <?php
 
-namespace RetailCrm\Client;
+namespace Simla\Client;
 
 use JMS\Serializer\SerializerInterface;
 use Psr\Http\Client\ClientExceptionInterface;
@@ -8,23 +8,25 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use RetailCrm\Component\Environment;
-use RetailCrm\Component\Exception\LocalApiException;
-use RetailCrm\Component\Exception\ClientException;
-use RetailCrm\Interfaces\AppDataInterface;
-use RetailCrm\Interfaces\ClientInterface as LocalClientInterface;
-use RetailCrm\Interfaces\RequestFactoryInterface;
-use RetailCrm\Model\Request\BaseRequest;
-use RetailCrm\Model\Response\BaseResponse;
-use RetailCrm\Model\Response\ResponseInterface;
-use RetailCrm\Traits\ValidatorAwareTrait;
+use Simla\Component\Environment;
+use Simla\Component\Exception\LocalApiException;
+use Simla\Component\Exception\ClientException;
+use Simla\Component\Exception\FactoryException;
+use Simla\Component\Exception\ValidationException;
+use Simla\Interfaces\AppDataInterface;
+use Simla\Interfaces\ClientInterface as LocalClientInterface;
+use Simla\Interfaces\RequestFactoryInterface;
+use Simla\Model\Request\BaseRequest;
+use Simla\Model\Response\BaseResponse;
+use Simla\Model\Response\ResponseInterface;
+use Simla\Traits\ValidatorAwareTrait;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Client
  *
  * @category Client
- * @package  RetailCrm\Client
+ * @package  Simla\Client
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Client implements LocalClientInterface
@@ -32,7 +34,7 @@ class Client implements LocalClientInterface
     use ValidatorAwareTrait;
 
     /**
-     * @var \RetailCrm\Interfaces\AppDataInterface $appData
+     * @var AppDataInterface $appData
      */
     protected $appData;
 
@@ -43,7 +45,7 @@ class Client implements LocalClientInterface
     protected $httpClient;
 
     /**
-     * @var \RetailCrm\Interfaces\RequestFactoryInterface $requestFactory
+     * @var RequestFactoryInterface $requestFactory
      * @Assert\NotNull(message="RequestFactoryInterface should be provided")
      */
     protected $requestFactory;
@@ -55,7 +57,7 @@ class Client implements LocalClientInterface
     protected $serializer;
 
     /**
-     * @var \Psr\Log\LoggerInterface $logger
+     * @var LoggerInterface $logger
      */
     protected $logger;
 
@@ -67,7 +69,7 @@ class Client implements LocalClientInterface
     /**
      * Client constructor.
      *
-     * @param \RetailCrm\Interfaces\AppDataInterface       $appData
+     * @param AppDataInterface       $appData
      */
     public function __construct(AppDataInterface $appData)
     {
@@ -75,7 +77,7 @@ class Client implements LocalClientInterface
     }
 
     /**
-     * @throws \RetailCrm\Component\Exception\ValidationException
+     * @throws ValidationException
      */
     public function validateSelf(): void
     {
@@ -84,7 +86,7 @@ class Client implements LocalClientInterface
     }
 
     /**
-     * @param \Psr\Http\Client\ClientInterface $httpClient
+     * @param ClientInterface $httpClient
      */
     public function setHttpClient(ClientInterface $httpClient): void
     {
@@ -92,7 +94,7 @@ class Client implements LocalClientInterface
     }
 
     /**
-     * @param \JMS\Serializer\SerializerInterface $serializer
+     * @param SerializerInterface $serializer
      */
     public function setSerializer(SerializerInterface $serializer): void
     {
@@ -100,7 +102,7 @@ class Client implements LocalClientInterface
     }
 
     /**
-     * @param \RetailCrm\Interfaces\RequestFactoryInterface $requestFactory
+     * @param RequestFactoryInterface $requestFactory
      */
     public function setRequestFactory(RequestFactoryInterface $requestFactory): void
     {
@@ -108,7 +110,7 @@ class Client implements LocalClientInterface
     }
 
     /**
-     * @param \Psr\Log\LoggerInterface $logger
+     * @param LoggerInterface $logger
      *
      * @return Client
      */
@@ -119,7 +121,7 @@ class Client implements LocalClientInterface
     }
 
     /**
-     * @param \RetailCrm\Component\Environment $env
+     * @param Environment $env
      *
      * @return Client
      */
@@ -143,13 +145,13 @@ class Client implements LocalClientInterface
      *    ErrorInterface - you can use `instanceof` to differentiate such results from the others. This inconsistency
      *    is brought by the API design itself, and cannot be easily removed.
      *
-     * @param \RetailCrm\Model\Request\BaseRequest $request
+     * @param BaseRequest $request
      *
      * @return ResponseInterface
-     * @throws \RetailCrm\Component\Exception\ValidationException
-     * @throws \RetailCrm\Component\Exception\FactoryException
-     * @throws \RetailCrm\Component\Exception\ClientException
-     * @throws \RetailCrm\Component\Exception\LocalApiException
+     * @throws ValidationException
+     * @throws FactoryException
+     * @throws ClientException
+     * @throws LocalApiException
      */
     public function sendRequest(BaseRequest $request): ResponseInterface
     {
@@ -216,7 +218,7 @@ class Client implements LocalClientInterface
     /**
      * Returns body stream data (it should work like that in order to keep compatibility with some implementations).
      *
-     * @param \Psr\Http\Message\StreamInterface $stream
+     * @param StreamInterface $stream
      *
      * @return string
      */

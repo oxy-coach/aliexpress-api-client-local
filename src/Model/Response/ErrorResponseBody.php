@@ -4,9 +4,9 @@
  * PHP version 7.3
  *
  * @category ErrorResponseBody
- * @package  RetailCrm\Model\Response
+ * @package  Simla\Model\Response
  */
-namespace RetailCrm\Model\Response;
+namespace Simla\Model\Response;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation as JMS;
  * Class ErrorResponseBody
  *
  * @category ErrorResponseBody
- * @package  RetailCrm\Model\Response
+ * @package  Simla\Model\Response
  */
 class ErrorResponseBody
 {

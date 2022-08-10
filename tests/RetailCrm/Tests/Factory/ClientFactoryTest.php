@@ -4,20 +4,20 @@
  * PHP version 7.3
  *
  * @category ClientFactoryTest
- * @package  RetailCrm\Tests\Factory
+ * @package  Simla\Tests\Factory
  */
 namespace RetailCrm\Tests\Factory;
 
-use RetailCrm\Component\AppData;
-use RetailCrm\Component\Exception\ValidationException;
-use RetailCrm\Factory\ClientFactory;
+use Simla\Component\AppData;
+use Simla\Component\Exception\ValidationException;
+use Simla\Factory\ClientFactory;
 use RetailCrm\Test\TestCase;
 
 /**
  * Class ClientFactoryTest
  *
  * @category ClientFactoryTest
- * @package  RetailCrm\Tests\Factory
+ * @package  Simla\Tests\Factory
  */
 class ClientFactoryTest extends TestCase
 {

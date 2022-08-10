@@ -3,10 +3,10 @@
  * PHP version 7.3
  *
  * @category OrderProductDto
- * @package  RetailCrm\Model\Entity
+ * @package  Simla\Model\Entity
  */
 
-namespace RetailCrm\Model\Entity;
+namespace Simla\Model\Entity;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -14,7 +14,7 @@ use JMS\Serializer\Annotation as JMS;
  * Class OrderProductDto
  *
  * @category OrderProductDto
- * @package  RetailCrm\Model\Entity
+ * @package  Simla\Model\Entity
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
 class OrderProductDto extends BaseProductDto
@@ -36,9 +36,9 @@ class OrderProductDto extends BaseProductDto
     public $issueStatus;
 
     /**
-     * @var \RetailCrm\Model\Entity\PromotionDto[] $promotions
+     * @var PromotionDto[] $promotions
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\PromotionDto>")
+     * @JMS\Type("array<Simla\Model\Entity\PromotionDto>")
      * @JMS\SerializedName("promotions")
      */
     public $promotions;

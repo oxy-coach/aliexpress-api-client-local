@@ -1,6 +1,6 @@
 <?php
 
-namespace RetailCrm\Model\Entity;
+namespace Simla\Model\Entity;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -8,7 +8,7 @@ use JMS\Serializer\Annotation as JMS;
  * Class PreSplitPostingDto
  *
  * @category PreSplitPostingDto
- * @package  RetailCrm\Model\Entity
+ * @package  Simla\Model\Entity
  */
 class PreSplitPostingDto
 {
@@ -37,9 +37,9 @@ class PreSplitPostingDto
     public $firstMileType;
 
     /**
-     * @var \RetailCrm\Model\Entity\PostingLineDto[] $postingLines
+     * @var PostingLineDto[] $postingLines
      *
-     * @JMS\Type("array<RetailCrm\Model\Entity\PostingLineDto>")
+     * @JMS\Type("array<Simla\Model\Entity\PostingLineDto>")
      * @JMS\SerializedName("posting_lines")
      */
     public $postingLines;
