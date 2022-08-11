@@ -38,6 +38,14 @@ class BaseProductDto
     public $skuId;
 
     /**
+     * @var string $skuCode
+     *
+     * @JMS\Type("string")
+     * @JMS\SerializedName("sku_code")
+     */
+    public $skuCode;
+
+    /**
      * @var int $quantity
      *
      * @JMS\Type("int")
