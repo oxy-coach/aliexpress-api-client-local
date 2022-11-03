@@ -9,7 +9,7 @@ class OrderDisplayStatuses
     public const PAYMENT_PENDING = 'PaymentPending';
     public const WAIT_EXAMINE_MONEY = 'WaitExamineMoney';
     public const WAIT_GROUP = 'WaitGroup';
-    public const WAIT_SEND_GOOD = 'WaitSendGood';
+    public const WAIT_SEND_GOOD = 'WaitSendGoods';
     public const PARTIAL_SEND_GOODS = 'PartialSendGoods';
     public const WAIT_ACCEPT_GOODS = 'WaitAcceptGoods';
     public const IN_CANCEL = 'InCancel';
